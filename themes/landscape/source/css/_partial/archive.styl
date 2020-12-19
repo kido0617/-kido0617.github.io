@@ -1,0 +1,86 @@
+.archives-wrap
+  margin: section-margin 0
+
+.archive-title-wrap
+  margin-bottom: 1em
+
+.archive-title
+  @extend $block-caption
+
+.archive-h1
+  @extend $block-caption
+
+.archive-article-block
+  @extend $block
+  margin-bottom: 10px
+  padding: 10px
+  display: block
+  text-decoration: none
+
+
+.archive-article-block:hover
+  background: #F4F4F4
+
+.archive-article
+  display: flex
+  flex-direction: row
+  justify-content: space-between;
+  flex-wrap: wrap
+  text-decoration none
+  margin-top: -5px
+
+.archive-article-info
+  width: 240px
+  margin-top: 5px
+
+.archive-article-date
+  margin-right: 20px
+
+.archive-article-date, .archive-article-category
+  color: color-default 
+  font-size: 0.85em
+  line-height: 1em
+  margin-bottom: 0.5em
+
+.archive-article-title
+  margin-top:5px
+  flex-basis: 70%
+  flex-grow: 1
+  font-weight: bold
+  color: color-default
+
+#page-nav
+  clearfix()
+  margin: block-margin auto
+  background: #fff
+  box-shadow: 1px 2px 3px #ddd
+  border: 1px solid color-border
+  border-radius: 3px
+  text-align: center
+  color: color-grey
+  overflow: hidden
+  a, span
+    padding: 10px 20px
+    line-height: 1
+    height: 2ex
+  a
+    color: color-grey
+    text-decoration: none
+    &:hover
+      background: color-grey
+      color: #fff
+  .prev
+    float: left
+  .next
+    float: right
+  .page-number
+    display: inline-block
+    @media mq-mobile
+      display: none
+  .current
+    color: color-default
+    font-weight: bold
+  .space
+    color: color-border
+    @media mq-mobile
+      display: none

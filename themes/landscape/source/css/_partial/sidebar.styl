@@ -1,0 +1,100 @@
+
+#sidebar
+  @media mq-normal
+    column(sidebar-column)
+
+.ad-widget
+  @media mq-mobile
+    display: none
+
+.widget-wrap
+  margin: block-margin 0
+
+.widget-title
+  @extend $block-caption
+
+
+.widget
+  @extend $base-style
+  color: color-sidebar-text
+  text-shadow: 0 1px #fff
+  background: color-widget-background
+  box-shadow: 0 -1px 4px color-widget-border inset
+  border: 1px solid color-widget-border
+  padding: 15px
+  border-radius: 3px
+  line-height: line-height
+  word-wrap: break-word
+  font-size: 0.9em
+  a
+    padding: 2px 0
+    color: color-link
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+  ul, ol
+    list-style: none
+    margin: 0
+    ul, ol
+      margin: 0 20px
+    ul
+      list-style: disc
+    ol
+      list-style: decimal
+
+.category-list-count
+.archive-list-count
+  padding-left: 5px
+  color: color-sidebar-text
+  font-size: 0.9em
+  &:before
+    content: "("
+  &:after
+    content: ")"
+
+
+
+#search-form-wrap
+  position: absolute
+  top: 15px
+  width: 150px
+  height: 30px
+  right: -150px
+  opacity: 0
+  transition: 0.2s ease-out
+  &.on
+    opacity: 1
+    right: 0
+  @media mq-mobile
+    width: 100%
+    right: -100%
+
+.search-form
+  position: relative
+  label
+    color: color-grey
+  div
+    margin-bottom:5px
+
+.search-form-input
+  padding-left: 10px
+  color: color-default
+  width: 100%
+  height: 30px
+  line-height: 28px;
+  font: 13px font-sans
+  border: none
+  &::-webkit-search-results-decoration
+  &::-webkit-search-cancel-button
+    -webkit-appearance: none
+
+.search-form-submit
+  position: absolute
+  top: 32px
+  right: 10px
+  fill: #bbb
+  border: none
+  background: none
+  cursor: pointer
+  &:hover, &:focus
+    fill: #777

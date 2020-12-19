@@ -1,0 +1,33 @@
+  <% 
+    var crumbs = [];
+    if(!is_home()){
+      crumbs.push({url: '/', name: 'ホーム'});
+    }
+    if(page.year) {
+      crumbs.push({url: null, name: page.year + '年'});
+    } else if(page.category) {
+      crumbs.push({url: null, name: page.category});
+    }
+    if(is_post()){
+      var cat = page.categories.first();
+      crumbs.push({url: url_for(cat.path), name: cat.name});
+      crumbs.push({url: null, name: page.title});
+    }
+  %>
+  <% if(crumbs.length > 0){ %>
+    <ul vocab="https://schema.org/" typeof="BreadcrumbList" class="breadcrumb">
+      <% for(var i = 0; i < crumbs.length; i++) { %>
+        <li property="itemListElement" typeof="ListItem">
+          <% if(crumbs[i].url) { %>
+            <a property="item" typeof="WebPage" href="<%- crumbs[i].url %>"><span property="name"><%- crumbs[i].name %></span></a>
+          <% } else { %>
+            <span property="name"><%- crumbs[i].name %></span>
+          <% } %>
+          <meta property="position" content="<%- i %>" />
+          <% if(i != crumbs.length - 1) { %>
+            &gt;
+          <% } %>
+        </li>
+      <% } %>
+    </ul>
+  <% } %>

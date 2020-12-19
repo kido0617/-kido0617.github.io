@@ -1,0 +1,122 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: kido Tech Blog
+subtitle: ''
+description: '技術ブログです。Unity、WordPress、JavaScript、ツクール、ティラノスクリプト、PHPなどの情報を記載しています。'
+keywords:
+author: kido
+language: ja
+timezone: 'Asia/Tokyo'
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: https://kido0617.github.io/
+root: /
+permalink: :title/
+permalink_defaults:
+pretty_urls:
+  trailing_index: false # Set to false to remove trailing index.html from permalinks
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link:
+  enable: true # Open external links in new tab
+  field: site # Apply to the whole site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  wrap: true
+  auto_detect: false
+  tab_replace: ''
+
+# Category & Tag
+default_category: uncategorized
+tag_map:
+
+# Metadata elements
+## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+meta_generator: true
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+## Use post's date for updated date unless set in front-matter
+use_date_for_updated: false
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 5
+pagination_dir: page
+
+# Include / Exclude file(s)
+## include:/exclude: options only apply to the 'source/' folder
+include:
+exclude:
+ignore:
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: landscape
+
+# Deployment
+## Docs: http://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: github.com:kido0617/kido0617.github.io.git
+  branch: master
+
+index_generator:
+  path: ''
+  per_page: 20
+  order_by: -date
+  
+archive_generator:
+  per_page: 0
+
+category_generator:
+  per_page: 0
+
+tag_generator:
+  per_page: 0
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 10
+
+sitemap:
+    path: sitemap.xml
+    tag: false
+    category: true
+
+category_map:
+  ティラノスクリプト: TyranoScript
+  RPGツクールMV: RPGMakerMV
+  RPGツクールVXAce: RPGMakerVXAce
+  その他: Others
+  Golang: Go 

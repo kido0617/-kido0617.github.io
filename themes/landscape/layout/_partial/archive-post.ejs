@@ -1,0 +1,11 @@
+<a class="archive-article-block"  href="<%- url_for(post.path) %>">
+  <div class="archive-article">
+    <div class="archive-article-info">
+      <span class="archive-article-date">
+        <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
+      </span>
+      <span class="archive-article-category"><%= post.categories.first().name %></span>
+    </div>
+    <span class="archive-article-title"><%= post.title %></span>
+  </div>
+</a>
