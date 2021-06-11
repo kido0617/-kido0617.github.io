@@ -19,6 +19,7 @@ permalink: :title/
 permalink_defaults:
 pretty_urls:
   trailing_index: false # Set to false to remove trailing index.html from permalinks
+  trailing_html: false # Set to false to remove trailing '.html' from permalinks
 
 # Directory
 source_dir: source
@@ -49,9 +50,21 @@ highlight:
   wrap: true
   auto_detect: false
   tab_replace: ''
+  hljs: false
+prismjs:
+  enable: false
+  preprocess: true
+  line_number: true
+  tab_replace: ''
+
+index_generator:
+  path: ''
+  per_page: 20
+  order_by: -date
 
 # Category & Tag
 default_category: uncategorized
+category_map:
 tag_map:
 
 # Metadata elements
@@ -64,8 +77,8 @@ meta_generator: true
 ## http://momentjs.com/docs/#/displaying/format/
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
-## Use post's date for updated date unless set in front-matter
-use_date_for_updated: false
+
+updated_option: date
 
 # Pagination
 ## Set per_page to 0 to disable pagination
@@ -90,10 +103,7 @@ deploy:
   repo: github.com:kido0617/kido0617.github.io.git
   branch: master
 
-index_generator:
-  path: ''
-  per_page: 20
-  order_by: -date
+
   
 archive_generator:
   per_page: 0
