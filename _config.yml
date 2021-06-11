@@ -99,7 +99,7 @@ theme: landscape
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: github.com:kido0617/kido0617.github.io.git
+  repo: git@github.com:kido0617/kido0617.github.io.git
   branch: master
 
 
