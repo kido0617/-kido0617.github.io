@@ -89,12 +89,6 @@ APP_CONFIG_CACHE: /tmp/config.php
 APP_ROUTES_CACHE: /tmp/routes.php
 ```
 
-もう一つ以下のエラーが発生することがありました。  
-
-`The /workspace/bootstrap/cache directory must be present and writable. `
-
-これについてはcomposer.jsonのpost-autoload-dumpに`"mkdir -p ./bootstrap/cache/"`を追加して対処しました。  
-
 ```json
 "post-autoload-dump": [
     "mkdir -p ./bootstrap/cache/",
