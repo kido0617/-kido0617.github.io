@@ -66,21 +66,9 @@ Cloud Storageを使用しています。Laravelで使用するには以下のラ
 
 ## デプロイ
 
-現状、CI/CDの環境は整えられていないので、手動で以下のようなコードでデプロイしています。  
-
-```
-git clone --depth 1 git@github.com:xxxx/yyyyyy.git
-cd yyyyyy
-composer install --optimize-autoloader --no-dev
-php artisan config:cache
-php artisan route:cache
-gcloud app deploy app.yaml
-cd ../
-rm -rf yyyyyy
-```
-
 また、デプロイ後以下のエラーが発生したので、app.yamlにはそれぞれのキャッシュファイルの保存場所を指定しています。   
 [Laravel on App Engine Standard: The /srv/bootstrap/cache directory must be present and writable](https://stackoverflow.com/questions/56921310/laravel-on-app-engine-standard-the-srv-bootstrap-cache-directory-must-be-prese)
+
 
 ```yaml
 APP_SERVICES_CACHE: /tmp/services.php
@@ -88,15 +76,6 @@ APP_PACKAGES_CACHE: /tmp/packages.php
 APP_CONFIG_CACHE: /tmp/config.php
 APP_ROUTES_CACHE: /tmp/routes.php
 ```
-
-```json
-"post-autoload-dump": [
-    "mkdir -p ./bootstrap/cache/",
-    "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-    "@php artisan package:discover --ansi"
-],
-```
-
 
 ## 開発用
 
