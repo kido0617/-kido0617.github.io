@@ -1,0 +1,49 @@
+title: History Inspectorの紹介
+date: 2021-08-05
+category: Unity
+---
+
+この記事は「[Unity アセット真夏のアドベントカレンダー 2021 Summer!](https://assetstore.info/eventandcontest/adventcalendar/summer-advent-calendar-2021/)」8/5の記事です。  
+
+
+## 概要
+
+Unityでアセットの量が膨大な大きなプロジェクトを扱っていると、必要なアセットを探すのに苦労します。  
+そういったときに手助けになるアセットが今回紹介する「[History Inspector](https://assetstore.unity.com/packages/tools/utilities/history-inspector-44279?utm_source=twitter&utm_medium=social&utm_campaign=jp-advent-calendar-summer)」です。  
+このアセットは選択したファイルの履歴を保存し、その履歴にアクセスする手段を提供するアセットです。  
+直近で触ったファイルをもう一度いじる必要があるケースはよくあり、そういったときにこのアセットがあると便利です。  
+
+
+## 使い方
+
+History Inspectorをインストールした後、`Window -> History Inspector -> Open History Inspector window`をクリックすると、以下のビューが表示されます。  
+
+![History Inspectorの表示](/img/2021-08-05-history-inspector/hi1.jpg)
+
+
+
+
+## アセットのファイル構成
+
+ソースコードが付属しているので、改造が可能です。  
+履歴にオブジェクト名しか出ないので、パスも表示したい思いが個人的に少しあります。
+
+## 履歴の保存先
+
+
+このアセットは履歴を`/Assets/HistoryInspector/Database/selectionlist.asset`に保存します。  
+バージョン管理する場合は、以下のファイルとフォルダを除外すると良いと思います。  
+
+```
+/Assets/HistoryInspector/Database/
+/Assets/HistoryInspector/Database.meta
+```
+
+
+## まとめ
+
+今回紹介したアセットは選択したファイルの履歴を保存し、アクセスしやすくするアセットでした。  
+個人的にファイルのアクセスを円滑にするオススメしたいアセットがもう一つあります。  
+それはお気に入りのファイルを保存しておく「[Kris' Favorite Assets](https://assetstore.unity.com/packages/tools/utilities/kris-favorite-assets-143105?utm_source=twitter&utm_medium=social&utm_campaign=jp-advent-calendar-summer)」です。  
+こちらは頻繁にアクセスするファイルをお気に入り登録できるので、併せて利用すると捗ります。  
+具体的に「[Kris' Favorite Assets が便利](/unity/2020-08-29-krisFavoriteAssets/)」で紹介しています。
