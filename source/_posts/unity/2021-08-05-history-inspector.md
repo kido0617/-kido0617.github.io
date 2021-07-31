@@ -8,7 +8,7 @@ category: Unity
 
 ## 概要
 
-Unityでアセットの量が膨大な大きなプロジェクトを扱っていると、必要なアセットを探すのに苦労します。  
+Unityでアセットの量が膨大なプロジェクトを扱っていると、必要なアセットを探すのに苦労します。  
 そういったときに手助けになるアセットが今回紹介する「[History Inspector](https://assetstore.unity.com/packages/tools/utilities/history-inspector-44279?utm_source=twitter&utm_medium=social&utm_campaign=jp-advent-calendar-summer)」です。  
 このアセットは選択したファイルの履歴を保存し、その履歴にアクセスする手段を提供するアセットです。  
 直近で触ったファイルをもう一度いじる必要があるケースはよくあり、そういったときにこのアセットがあると便利です。  
@@ -20,14 +20,20 @@ History Inspectorをインストールした後、`Window -> History Inspector -
 
 ![History Inspectorの表示](/img/2021-08-05-history-inspector/hi1.jpg)
 
-左右の矢印ボタンでファイルの選択履歴を移動できます。  
+以下動画のように左右の矢印ボタンでファイルの選択履歴を移動できます。  
+
+<video src="/img/2021-08-05-history-inspector/movie1.mp4" width="416" controls></video>
+
 また、上記図の現在選択しているファイル「SampleScene」となっているところをクリックすると以下のような履歴一覧が表示されます。
 
 ![履歴一覧の表示](/img/2021-08-05-history-inspector/hi2.jpg)
 
+<video src="/img/2021-08-05-history-inspector/movie2.mp4" width="416" controls></video>
+
 この履歴一覧で鍵マークのアイコンがありますが、これはある種のお気に入り機能のようなものです。  
 選択履歴に関係なく、常に一番上に表示しておくことができます。  
 その次の`(1)`の数字はファイル選択数を指します。複数選択した場合もそれが履歴に残るため、このような数字が表示されています。
+
 
 
 ## アセットのファイル構成
@@ -49,8 +55,8 @@ History Inspectorをインストールした後、`Window -> History Inspector -
 
 ## まとめ
 
-今回紹介したアセットは選択したファイルの履歴を保存し、アクセスしやすくするアセットでした。  
-個人的にファイルのアクセスを円滑にするオススメしたいアセットがもう一つあります。  
-それはお気に入りのファイルを保存しておく「[Kris' Favorite Assets](https://assetstore.unity.com/packages/tools/utilities/kris-favorite-assets-143105?utm_source=twitter&utm_medium=social&utm_campaign=jp-advent-calendar-summer)」です。  
+今回紹介したHistory Inspectorは選択したファイルの履歴を保存し、アクセスしやすくするアセットでした。  
+History Inspectorに履歴をロックするお気に入りのような機能がありますが、個人的にお気に入り機能ではオススメしたいアセットが別にあります。  
+それは「[Kris' Favorite Assets](https://assetstore.unity.com/packages/tools/utilities/kris-favorite-assets-143105?utm_source=twitter&utm_medium=social&utm_campaign=jp-advent-calendar-summer)」です。  
 こちらは頻繁にアクセスするファイルをお気に入り登録できるので、併せて利用すると捗ります。  
 具体的に「[Kris' Favorite Assets が便利](/unity/2020-08-29-krisFavoriteAssets/)」で紹介しています。
