@@ -28,13 +28,11 @@ History Inspectorをインストールした後、`Window -> History Inspector -
 
 ![履歴一覧の表示](/img/2021-08-05-history-inspector/hi2.jpg)
 
-<video src="/img/2021-08-05-history-inspector/movie2.mp4" width="416" controls></video>
-
 この履歴一覧で鍵マークのアイコンがありますが、これはある種のお気に入り機能のようなものです。  
 選択履歴に関係なく、常に一番上に表示しておくことができます。  
 その次の`(1)`の数字はファイル選択数を指します。複数選択した場合もそれが履歴に残るため、このような数字が表示されています。
 
-
+<video src="/img/2021-08-05-history-inspector/movie2.mp4" width="416" controls></video>
 
 ## アセットのファイル構成
 
@@ -60,3 +58,10 @@ History Inspectorに履歴をロックするお気に入りのような機能が
 それは「[Kris' Favorite Assets](https://assetstore.unity.com/packages/tools/utilities/kris-favorite-assets-143105?utm_source=twitter&utm_medium=social&utm_campaign=jp-advent-calendar-summer)」です。  
 こちらは頻繁にアクセスするファイルをお気に入り登録できるので、併せて利用すると捗ります。  
 具体的に「[Kris' Favorite Assets が便利](/unity/2020-08-29-krisFavoriteAssets/)」で紹介しています。
+
+
+
+## 使用バージョン
+
+Unity 2019.4.29
+History Inspector 1.2
