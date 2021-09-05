@@ -1,6 +1,6 @@
 title: SpineのSkeletonAnimationとSkeletonMecanimについて
 date: 2021-06-24
-category: Unity
+category: Spine
 ---
 
 基本的に以下のURLのドキュメントを参考にしています。  
