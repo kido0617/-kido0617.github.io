@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kido0617.github.io/"/>
-  <updated>2021-09-06T15:00:00.000Z</updated>
+  <updated>2021-09-08T15:00:00.000Z</updated>
   <id>https://kido0617.github.io/</id>
   
   <author>
@@ -17,13 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>UnityでSpineのモデルに物理演算を適用する注意点</title>
+    <link href="https://kido0617.github.io/spine/2021-09-09-hinge-physics/"/>
+    <id>https://kido0617.github.io/spine/2021-09-09-hinge-physics/</id>
+    <published>2021-09-08T15:00:00.000Z</published>
+    <updated>2021-09-08T15:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>公式ブログの<a href="http://ja.esotericsoftware.com/blog/2D-and-3D-physics-for-spine-unity">spine-unity 2Dおよび3D物理演算</a>に沿って物理演算をSpineのモデルに適用したのですが、ハマったことがあったので書いておきます。</p><p>サンプルとして以下の図のように縦にボーンを連結したものを用意し、物理演算を仕込んでいきます。</p><p><img src="/img/2021-09-09-hinge-physics/sample.jpg" alt="サンプル"></p><h2 id="Hinge-Joint-2D-だとうまくいかないケース"><a href="#Hinge-Joint-2D-だとうまくいかないケース" class="headerlink" title="Hinge Joint 2D だとうまくいかないケース"></a>Hinge Joint 2D だとうまくいかないケース</h2><p>公式ブログによるとUnityのHinge Jointを使用して物理演算を適用するようです。<br>ブログの手順に沿って生成する際、Hinge Joint 2Dか Hinge Joint 3Dか選択するフェーズがあります。<br>Spine自体が2Dですし、2Dを選択したくなるのですが、2Dを選択した場合、うまく行かないケースが2つありました。  </p><ol><li>まず、下記のように再生すると自動的に曲がっていってしまうケース  </li></ol><p><video src="/img/2021-09-09-hinge-physics/2dhinge.mp4" width="560"  controls></video></p><ol start="2"><li>左右の向きを変更した瞬間、回転が加わりおかしくなるケース  </li></ol><p>公式フォーラムで質問されている「<a href="http://ja.esotericsoftware.com/forum/Cape-physics-issue-when-flipped-13685?hilit=physics%20unity&p=60494&utm_source=pocket_mylist">Cape physics issue when flipped</a>」と同じケースです。<br>詳しい現象はフォーラムに動画があるのでそちらを参照してください。  </p><h2 id="解決策"><a href="#解決策" class="headerlink" title="解決策"></a>解決策</h2><p>上記フォーラムの回答でHinge Joint 3Dを使用することが勧められています。<br>実際、サンプルシーンとして同梱されている「SkeletonUtility Platformer HingeChain Physics」シーンでは、モーニングスターとマントがHinge Joint 3Dで実装されています。<br>その上、2Dだと向きによってHinge Joint 2Dが2セット生成されて設定しづらいという点もあり、3Dだと1セットで済むので楽です。</p><h2 id="Hinge-Joint-3D-で実装する"><a href="#Hinge-Joint-3D-で実装する" class="headerlink" title="Hinge Joint 3D で実装する"></a>Hinge Joint 3D で実装する</h2><p>Hinge Joint 3Dで実装すると無事、モデルの位置を左右に振ると、物理的にぶらぶら揺れるようになりました。   </p><p><video src="/img/2021-09-09-hinge-physics/3dhinge.mp4" width="560"  controls></video></p><h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>今回実装した範囲では、Hinge Joint 2Dを使用することができず、またメリットも見出すことができませんでした。<br>現状、私はHinge Joint 3Dで実装する方法を採用していきます。</p><h2 id="使用バージョン"><a href="#使用バージョン" class="headerlink" title="使用バージョン"></a>使用バージョン</h2><p>Unity 2020.3.11<br>Spine 4.0.24</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;概要&quot;&gt;&lt;a href=&quot;#概要&quot; class=&quot;headerlink&quot; title=&quot;概要&quot;&gt;&lt;/a&gt;概要&lt;/h2&gt;&lt;p&gt;公式ブログの&lt;a href=&quot;http://ja.esotericsoftware.com/blog/2D-and-3D-physics-f
+      
+    
+    </summary>
+    
+    
+      <category term="Spine" scheme="https://kido0617.github.io/categories/Spine/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>UnityでSpineのslotのマテリアルを変更する</title>
     <link href="https://kido0617.github.io/spine/2021-09-07-spine-slot-hue/"/>
     <id>https://kido0617.github.io/spine/2021-09-07-spine-slot-hue/</id>
     <published>2021-09-06T15:00:00.000Z</published>
     <updated>2021-09-06T15:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Unityで読み込んだSpineで作ったモデルの特定のスロットだけマテリアルを変えたいケースがあります。<br>例えば、帽子の色の色相を変えたいとか、髪の毛のコントラストを変えたいなどです。<br>その方法について調べたので今回まとめました。</p><p>まず、今回使用するサンプルのSpineのツリーとモデルを以下に示します。</p><p><img src="/img/2021-09-07-spine-slot-hue/spine-tree.jpg" alt="サンプル"></p><p><img src="/img/2021-09-07-spine-slot-hue/original-model.jpg" alt="モデル"></p><p>単純に赤色の四角を2つ用意し、今回はマテリアルを変更する例として片方の色相を変えることを目指します。</p><h2 id="色相を変えるには"><a href="#色相を変えるには" class="headerlink" title="色相を変えるには"></a>色相を変えるには</h2><p>まず、Unityにインポートしたモデル全体の色相を変える方法を示します。<br>インポートした際に生成されるマテリアルのShaderを<code>Spine/Sprite/</code>のShaderに変えます。<br>ライティングの有無により違いますが今回は<code>Unlit</code>を使用しました。<br>このShaderにはColorAdjustmentの項目があり、これをチェックするとHueの値を変更できます。  </p><p><img src="/img/2021-09-07-spine-slot-hue/change-hue.jpg" alt="マテリアル"></p><p>上図のようにHueを0.14にすると下記のように色が変更されます。</p><p><img src="/img/2021-09-07-spine-slot-hue/changed-hue.jpg" alt="Hueチェンジ"></p><h2 id="Slotの色相を変える-方法1"><a href="#Slotの色相を変える-方法1" class="headerlink" title="Slotの色相を変える-方法1"></a>Slotの色相を変える-方法1</h2><p>Slotの色相を変える方法は2つあり、その1つが<a href="http://ja.esotericsoftware.com/spine-unity#SkeletonRendererCustomMaterials">SkeletonRendererCustomMaterials</a>を使用する方法です。<br>このコンポーネントをアタッチし、変更したいSlotに別途用意した色相を変更済みのマテリアルを設定するだけで変更可能です。  </p><p><img src="/img/2021-09-07-spine-slot-hue/srcm-inspector.jpg" alt="SkeletonRendererCustomMaterials"></p><p>上図のようにRed_Lに別途用意したマテリアルを設定すると下図のように片方だけ変わります。</p><p><img src="/img/2021-09-07-spine-slot-hue/using-srcm.jpg" alt="Red_Lスロットを変更"></p><h2 id="Slotの色相を変える-方法2"><a href="#Slotの色相を変える-方法2" class="headerlink" title="Slotの色相を変える-方法2"></a>Slotの色相を変える-方法2</h2><p>上記方法ではなく、プログラムから色相を変えたいケースがあります。<br>上記のSkeletonRendererCustomMaterialsはドキュメントにあるようにプログラムから使用するものではないようです。<br>プログラムから変更したい場合は<code>SkeletonRenderer.CustomSlotMaterials</code>を使用するようです。<br>以下に、CustomSlotMaterialsを用いて色相を変更するプログラムを載せます。</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Spine.Unity;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ChangeHue</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">float</span> hue = <span class="number">0.14f</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> skeletonRenderer = GetComponent&lt;SkeletonRenderer&gt;();</span><br><span class="line">    <span class="keyword">var</span> SkeletonAnimation = GetComponent&lt;SkeletonAnimation&gt;();</span><br><span class="line">    <span class="keyword">var</span> slot = SkeletonAnimation.Skeleton.FindSlot(<span class="string">&quot;Red_L&quot;</span>);           <span class="comment">//Red_Lスロットを探す</span></span><br><span class="line">    Material m = <span class="keyword">new</span> Material(GetComponent&lt;MeshRenderer&gt;().material);  <span class="comment">//現在使用しているMaterialを元に新しいMaterialを生成する</span></span><br><span class="line">    m.SetFloat(<span class="string">&quot;_Hue&quot;</span>, hue);</span><br><span class="line">    skeletonRenderer.CustomSlotMaterials[slot] = m;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>Shaderのパラメータの_Hueというパラメータ名はShaderのファイルを選択すると、インスペクタに表示されます。</p><p><img src="/img/2021-09-07-spine-slot-hue/shader-file.jpg" alt="パラメータの確認"></p><h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>今回はスロットのMaterialを変える例として色相を変更しましたが、他の要素を変えるのも要領は同じです。<br>2通りの方法、どちらもコンポーネントをアタッチしたモデルのみマテリアルの変更が反映されます。</p><h2 id="使用バージョン"><a href="#使用バージョン" class="headerlink" title="使用バージョン"></a>使用バージョン</h2><p>Unity 2019.4.24<br>Spine 4.0.24</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Unityで読み込んだSpineで作ったモデルの特定のスロットだけマテリアルを変えたいケースがあります。<br>例えば、帽子の色の色相を変えたいとか、髪の毛のコントラストを変えたいなどです。<br>その方法について調べたので今回まとめました。</p><p>まず、今回使用するサンプルのSpineのツリーとモデルを以下に示します。</p><p><img src="/img/2021-09-07-spine-slot-hue/spine-tree.jpg" alt="サンプル"></p><p><img src="/img/2021-09-07-spine-slot-hue/original-model.jpg" alt="モデル"></p><p>単純に赤色の四角を2つ用意し、今回はマテリアルを変更する例として片方の色相を変えることを目指します。</p><h2 id="色相を変えるには"><a href="#色相を変えるには" class="headerlink" title="色相を変えるには"></a>色相を変えるには</h2><p>まず、Unityにインポートしたモデル全体の色相を変える方法を示します。<br>インポートした際に生成されるマテリアルのShaderを<code>Spine/Sprite/</code>のShaderに変えます。<br>ライティングの有無により違いますが今回は<code>Unlit</code>を使用しました。<br>このShaderにはColorAdjustmentの項目があり、これをチェックするとHueの値を変更できます。  </p><p><img src="/img/2021-09-07-spine-slot-hue/change-hue.jpg" alt="マテリアル"></p><p>上図のようにHueを0.14にすると下記のように色が変更されます。</p><p><img src="/img/2021-09-07-spine-slot-hue/changed-hue.jpg" alt="Hueチェンジ"></p><h2 id="Slotの色相を変える-方法1"><a href="#Slotの色相を変える-方法1" class="headerlink" title="Slotの色相を変える-方法1"></a>Slotの色相を変える-方法1</h2><p>Slotの色相を変える方法は2つあり、その1つが<a href="http://ja.esotericsoftware.com/spine-unity#SkeletonRendererCustomMaterials">SkeletonRendererCustomMaterials</a>を使用する方法です。<br>このコンポーネントをアタッチし、変更したいSlotに別途用意した色相を変更済みのマテリアルを設定するだけで変更可能です。  </p><p><img src="/img/2021-09-07-spine-slot-hue/srcm-inspector.jpg" alt="SkeletonRendererCustomMaterials"></p><p>上図のようにRed_Lに別途用意したマテリアルを設定すると下図のように片方だけ変わります。</p><p><img src="/img/2021-09-07-spine-slot-hue/using-srcm.jpg" alt="Red_Lスロットを変更"></p><h2 id="Slotの色相を変える-方法2"><a href="#Slotの色相を変える-方法2" class="headerlink" title="Slotの色相を変える-方法2"></a>Slotの色相を変える-方法2</h2><p>上記方法ではなく、プログラムから色相を変えたいケースがあります。<br>上記のSkeletonRendererCustomMaterialsはドキュメントにあるようにプログラムから使用するものではないようです。<br>プログラムから変更したい場合は<code>SkeletonRenderer.CustomSlotMaterials</code>を使用するようです。<br>以下に、CustomSlotMaterialsを用いて色相を変更するプログラムを載せます。</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Spine.Unity;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ChangeHue</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">float</span> hue = <span class="number">0.14f</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> skeletonRenderer = GetComponent&lt;SkeletonRenderer&gt;();</span><br><span class="line">    <span class="keyword">var</span> SkeletonAnimation = GetComponent&lt;SkeletonAnimation&gt;();</span><br><span class="line">    <span class="keyword">var</span> slot = SkeletonAnimation.Skeleton.FindSlot(<span class="string">&quot;Red_L&quot;</span>);           <span class="comment">//Red_Lスロットを探す</span></span><br><span class="line">    Material m = <span class="keyword">new</span> Material(GetComponent&lt;MeshRenderer&gt;().material);  <span class="comment">//現在使用しているMaterialを元に新しいMaterialを生成する</span></span><br><span class="line">    m.SetFloat(<span class="string">&quot;_Hue&quot;</span>, hue);</span><br><span class="line">    skeletonRenderer.CustomSlotMaterials[slot] = m;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>Shaderのパラメータの_Hueというパラメータ名はShaderのファイルを選択すると、インスペクタに表示されます。</p><p><img src="/img/2021-09-07-spine-slot-hue/shader-file.jpg" alt="パラメータの確認"></p><h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>今回はスロットのMaterialを変える例として色相を変更しましたが、他の要素を変えるのも要領は同じです。<br>2通りの方法、どちらもコンポーネントをアタッチしたモデルのみマテリアルの変更が反映されます。</p><h2 id="使用バージョン"><a href="#使用バージョン" class="headerlink" title="使用バージョン"></a>使用バージョン</h2><p>Unity 2020.3.11<br>Spine 4.0.24</p>]]></content>
     
     <summary type="html">
     
@@ -234,30 +258,6 @@
     
     
       <category term="Unity" scheme="https://kido0617.github.io/categories/Unity/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>sitemap.xml登録の「取得できませんでした」について</title>
-    <link href="https://kido0617.github.io/others/2021-06-18-search-console-pending/"/>
-    <id>https://kido0617.github.io/others/2021-06-18-search-console-pending/</id>
-    <published>2021-06-17T15:00:00.000Z</published>
-    <updated>2021-06-17T15:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Search Consoleにsitemap.xmlを登録したときに「取得できませんでした」と表示されることがあります。<br>最初、xmlの形式や件数がオーバーしているなどのこちらのミスかと思ったのですが、10個に分割しているsitemap.xmlのいくつかは登録できていました。<br>言語を英語にして見ると「Couldn’t fetch」と表示されており、これで検索してみたところ、いくつか回答が見つかりました。<br>robot.txtやmetaタグでnoindexにしているという説もありましたが、これは違いました。<br>もう一つ、Search Console側の表示が違くて、実際はPendingだという説。<br>実際、そのとおりで1日置いたら徐々に取得可能なものが増えていきました。<br>単純に表示に惑わされただけで、待つのが正解だったという話。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Search Consoleにsitemap.xmlを登録したときに「取得できませんでした」と表示されることがあります。&lt;br&gt;最初、xmlの形式や件数がオーバーしているなどのこちらのミスかと思ったのですが、10個に分割しているsitemap.xmlのいくつかは登録できてい
-      
-    
-    </summary>
-    
-    
-      <category term="その他" scheme="https://kido0617.github.io/categories/Others/"/>
     
     
   </entry>
