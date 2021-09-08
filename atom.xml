@@ -17,7 +17,7 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>UnityでSpineのモデルに物理演算を適用する注意点</title>
+    <title>Spine-Unityの物理演算でHinge Joint2Dが正しく演算されない</title>
     <link href="https://kido0617.github.io/spine/2021-09-09-hinge-physics/"/>
     <id>https://kido0617.github.io/spine/2021-09-09-hinge-physics/</id>
     <published>2021-09-08T15:00:00.000Z</published>

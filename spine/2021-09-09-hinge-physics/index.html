@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>UnityでSpineのモデルに物理演算を適用する注意点 | Spine | kido Tech Blog</title>
+  <title>Spine-Unityの物理演算でHinge Joint2Dが正しく演算されない | Spine | kido Tech Blog</title>
   
   <meta name="description" content="概要公式ブログのspine-unity 2Dおよび3D物理演算に沿って物理演算をSpineのモデルに適用したのですが、ハマったことがあったので書いておきます。 サンプルとして以下の図のように縦にボーンを連結したものを用意し、物理演算を仕込んでいきます。  Hinge Joint 2D だとうまくいかないケース公式ブログによるとUnityのHinge Jointを使用して物理演算を適用するようです。">
   <meta name="author" content="kido">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:type" content="article">
-  <meta property="og:title" content="UnityでSpineのモデルに物理演算を適用する注意点 | Spine | kido Tech Blog">
+  <meta property="og:title" content="Spine-Unityの物理演算でHinge Joint2Dが正しく演算されない | Spine | kido Tech Blog">
   <meta property="og:url" content="https://kido0617.github.io/spine/2021-09-09-hinge-physics/">
   <meta property="og:site_name" content="kido Tech Blog">
   <meta property="og:description" content="概要公式ブログのspine-unity 2Dおよび3D物理演算に沿って物理演算をSpineのモデルに適用したのですが、ハマったことがあったので書いておきます。 サンプルとして以下の図のように縦にボーンを連結したものを用意し、物理演算を仕込んでいきます。  Hinge Joint 2D だとうまくいかないケース公式ブログによるとUnityのHinge Jointを使用して物理演算を適用するようです。">
@@ -80,7 +80,7 @@
       
         <li property="itemListElement" typeof="ListItem">
           
-            <span property="name">UnityでSpineのモデルに物理演算を適用する注意点</span>
+            <span property="name">Spine-Unityの物理演算でHinge Joint2Dが正しく演算されない</span>
           
           <meta property="position" content="2" />
           
@@ -91,7 +91,7 @@
         <section id="main"><article id="post-spine/2021-09-09-hinge-physics" class="article article-type-post">
   <div class="article-inner">
     <header class="article-header">
-      <h1 class="article-title">UnityでSpineのモデルに物理演算を適用する注意点</h1>
+      <h1 class="article-title">Spine-Unityの物理演算でHinge Joint2Dが正しく演算されない</h1>
       <div class="article-meta">
         <a class="article-category-link" href="/categories/Spine/">Spine</a>
         <span class="article-date">
@@ -120,7 +120,7 @@
 
     </div>
     <footer class="article-footer">
-      <a href="https://twitter.com/intent/tweet?text=Unity%E3%81%A7Spine%E3%81%AE%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AB%E7%89%A9%E7%90%86%E6%BC%94%E7%AE%97%E3%82%92%E9%81%A9%E7%94%A8%E3%81%99%E3%82%8B%E6%B3%A8%E6%84%8F%E7%82%B9%20%7C%20Spine%20%7C%20kido tech blog%0a&url=https%3A%2F%2Fkido0617.github.io%2Fspine%2F2021-09-09-hinge-physics%2F" class="article-share-twitter" target="_blank" title="Twitter">
+      <a href="https://twitter.com/intent/tweet?text=Spine-Unity%E3%81%AE%E7%89%A9%E7%90%86%E6%BC%94%E7%AE%97%E3%81%A7Hinge%20Joint2D%E3%81%8C%E6%AD%A3%E3%81%97%E3%81%8F%E6%BC%94%E7%AE%97%E3%81%95%E3%82%8C%E3%81%AA%E3%81%84%20%7C%20Spine%20%7C%20kido tech blog%0a&url=https%3A%2F%2Fkido0617.github.io%2Fspine%2F2021-09-09-hinge-physics%2F" class="article-share-twitter" target="_blank" title="Twitter">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
         <path d="M512 113.2c-18.8 8.4-39.1 14-60.3 16.5 21.7-13 38.3-33.6 46.2-58.1-20.3 12-42.8 20.8-66.7 25.5-19.2-20.4-46.5-33.1-76.7-33.1-58 0-105 47-105 105 0 8.2 0.9 16.2 2.7 23.9-87.3-4.4-164.7-46.2-216.5-109.8-9 15.5-14.2 33.6-14.2 52.8 0 36.4 18.5 68.6 46.7 87.4-17.2-0.5-33.4-5.3-47.6-13.1 0 0.4 0 0.9 0 1.3 0 50.9 36.2 93.4 84.3 103-8.8 2.4-18.1 3.7-27.7 3.7-6.8 0-13.3-0.7-19.8-1.9 13.4 41.7 52.2 72.1 98.1 73-36 28.2-81.2 45-130.5 45-8.5 0-16.8-0.5-25.1-1.5 46.6 29.9 101.8 47.2 161.1 47.2 193.2 0 298.9-160.1 298.9-298.9 0-4.6-0.1-9.1-0.3-13.6 20.5-14.7 38.3-33.2 52.4-54.3z"></path>
         </svg>
