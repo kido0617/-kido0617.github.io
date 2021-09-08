@@ -1,4 +1,4 @@
-title: UnityでSpineのモデルに物理演算を適用する注意点
+title: Spine-Unityの物理演算でHinge Joint2Dが正しく演算されない
 date: 2021-09-09
 category: Spine
 ---
