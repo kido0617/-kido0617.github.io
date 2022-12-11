@@ -23,7 +23,7 @@
     <published>2022-12-10T15:00:00.000Z</published>
     <updated>2022-12-10T15:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<p>簡易的にログメッセージを表示するプラグインを製作しました。</p><p><video src="/img/2022-12-11-logmessage/logmessage.mp4" width="720" height="480" controls></video></p><p>以下のような感じでプラグインコマンドから指定します。<br>最初に初期化コマンドから表示位置とサイズを指定し実行します。<br>その後はメッセージ追加もコマンドからテキストを追加します。  </p><p><img src="/img/2022-12-11-logmessage/command.png" alt="コマンド例"></p><p>ダウンロードは<a href="https://raw.githubusercontent.com/kido0617/rpgmakerMZ-plugin/main/LogMessage/LogMessage.js">こちら</a></p><h2 id="制限事項"><a href="#制限事項" class="headerlink" title="制限事項"></a>制限事項</h2><p>演出で使用することを想定しているので、マップを移動したり、メニューを表示したら消えます。</p><h2 id="ライセンス"><a href="#ライセンス" class="headerlink" title="ライセンス"></a>ライセンス</h2><p>Released under the MIT license</p>]]></content>
+    <content type="html"><![CDATA[<p>簡易的にログメッセージを表示するプラグインを製作しました。</p><p><video src="/img/2022-12-11-logmessage/logmessage.mp4" width="720" height="480" controls></video></p><p>以下のような感じでプラグインコマンドから指定します。<br>最初に初期化コマンドから表示位置とサイズを指定し実行します。<br>その後はメッセージ追加コマンドからテキストを追加します。  </p><p><img src="/img/2022-12-11-logmessage/command.png" alt="コマンド例"></p><p>ダウンロードは<a href="https://raw.githubusercontent.com/kido0617/rpgmakerMZ-plugin/main/LogMessage/LogMessage.js">こちら</a></p><h2 id="制限事項"><a href="#制限事項" class="headerlink" title="制限事項"></a>制限事項</h2><p>演出で使用することを想定しているので、マップを移動したり、メニューを表示したら消えます。</p><h2 id="ライセンス"><a href="#ライセンス" class="headerlink" title="ライセンス"></a>ライセンス</h2><p>Released under the MIT license</p>]]></content>
     
     <summary type="html">
     
