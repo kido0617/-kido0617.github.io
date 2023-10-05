@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://kido0617.github.io/rpgmaker/2023-10-05-spine/</loc>
+        <lastmod>2023-10-04T15:00:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kido0617.github.io/rpgmaker/2022-12-11-logmessage/</loc>
         <lastmod>2022-12-10T15:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -177,7 +185,7 @@
     </url>
 
     <url>
-        <loc>https://kido0617.github.io/unity/2020-12-30-order-component/</loc>
+        <loc>https://kido0617.github.io/unity/2020-12-30-smart-inspector/</loc>
         <lastmod>2020-12-29T15:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -185,7 +193,7 @@
     </url>
 
     <url>
-        <loc>https://kido0617.github.io/unity/2020-12-30-smart-inspector/</loc>
+        <loc>https://kido0617.github.io/unity/2020-12-30-order-component/</loc>
         <lastmod>2020-12-29T15:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -273,7 +281,7 @@
     </url>
 
     <url>
-        <loc>https://kido0617.github.io/rpgmaker/2019-12-20-refresh-map/</loc>
+        <loc>https://kido0617.github.io/rpgmaker/2019-12-20-game-loop/</loc>
         <lastmod>2019-12-19T15:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -281,7 +289,7 @@
     </url>
 
     <url>
-        <loc>https://kido0617.github.io/rpgmaker/2019-12-20-game-loop/</loc>
+        <loc>https://kido0617.github.io/rpgmaker/2019-12-20-refresh-map/</loc>
         <lastmod>2019-12-19T15:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -313,7 +321,7 @@
     </url>
 
     <url>
-        <loc>https://kido0617.github.io/php/2019-12-08-intervention-image-variation/</loc>
+        <loc>https://kido0617.github.io/php/2019-12-08-laravel-route-cache-error/</loc>
         <lastmod>2019-12-07T15:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -321,7 +329,7 @@
     </url>
 
     <url>
-        <loc>https://kido0617.github.io/php/2019-12-08-laravel-route-cache-error/</loc>
+        <loc>https://kido0617.github.io/php/2019-12-08-intervention-image-variation/</loc>
         <lastmod>2019-12-07T15:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -377,6 +385,14 @@
     </url>
 
     <url>
+        <loc>https://kido0617.github.io/wordpress/2019-12-02-gae-wordpress/</loc>
+        <lastmod>2019-12-01T15:00:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kido0617.github.io/rpgmaker/2019-12-02-picture-number/</loc>
         <lastmod>2019-12-01T15:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -386,14 +402,6 @@
 
     <url>
         <loc>https://kido0617.github.io/tyrano/2019-12-02-save-chara-name/</loc>
-        <lastmod>2019-12-01T15:00:00.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kido0617.github.io/wordpress/2019-12-02-gae-wordpress/</loc>
         <lastmod>2019-12-01T15:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -793,7 +801,7 @@
     </url>
 
     <url>
-        <loc>https://kido0617.github.io/rpgmaker/2017-04-12-loadbitmap/</loc>
+        <loc>https://kido0617.github.io/rpgmaker/2017-04-12-custom-save/</loc>
         <lastmod>2017-04-11T15:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -801,7 +809,7 @@
     </url>
 
     <url>
-        <loc>https://kido0617.github.io/rpgmaker/2017-04-12-custom-save/</loc>
+        <loc>https://kido0617.github.io/rpgmaker/2017-04-12-loadbitmap/</loc>
         <lastmod>2017-04-11T15:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1177,7 +1185,7 @@
     </url>
 
     <url>
-        <loc>https://kido0617.github.io/others/2013-01-12-coherency/</loc>
+        <loc>https://kido0617.github.io/others/2013-01-15-word-recognition/</loc>
         <lastmod>2013-01-14T15:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1185,7 +1193,7 @@
     </url>
 
     <url>
-        <loc>https://kido0617.github.io/others/2013-01-15-word-recognition/</loc>
+        <loc>https://kido0617.github.io/others/2013-01-12-coherency/</loc>
         <lastmod>2013-01-14T15:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

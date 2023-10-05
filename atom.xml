@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kido0617.github.io/"/>
-  <updated>2022-12-10T15:00:00.000Z</updated>
+  <updated>2023-10-04T15:00:00.000Z</updated>
   <id>https://kido0617.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ツクールでSpine導入したときのメモ</title>
+    <link href="https://kido0617.github.io/rpgmaker/2023-10-05-spine/"/>
+    <id>https://kido0617.github.io/rpgmaker/2023-10-05-spine/</id>
+    <published>2023-10-04T15:00:00.000Z</published>
+    <updated>2023-10-04T15:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>ツクールのSpine実装の勉強会をする予定で作った資料を上げる。<br>ほぼ自分用のメモ書きなので、細かいところは詳細を省く。</p><h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><p>pixi-spine.jsというPixi.jsコミュニティが作っているspine用のライブラリを使う。<br><a href="https://makonet.sakura.ne.jp/rpg_tkool/MVMZ/PictureSpine/document.html">PictureSpine.js</a>はそれをツクール用に使えるようにしたもの。<br>ツクールのピクチャのようにSpineを使える。</p><h1 id="Spineのバージョン"><a href="#Spineのバージョン" class="headerlink" title="Spineのバージョン"></a>Spineのバージョン</h1><p>MVはPixi.js4系なのでSpineは3.8限定<br>MZはPixi.js5系なのでSpineは3.8~4.1まで使用可能<br>PictureSpine.jsはSpine3.8基準。多分みんな3.8で作っているので安定を取るなら3.8。<br>Spine4以上を使いたい場合、pixi-spine.jsは最新のビルドをする必要ある。普通にDLできずNode.js入れてnpm install しないといけない。<br>こちらで試した限りでは細かいところは未検証だが、4系もとりあえず動いた。</p><p>Spineの3.8と4以上の差は、グラフエディタや細かな便利機能が追加されている差がある。<br>基本的な機能は3.8時点で完成されているが、最新使えるなら使いたい。</p><h1 id="Spineのエクスポート"><a href="#Spineのエクスポート" class="headerlink" title="Spineのエクスポート"></a>Spineのエクスポート</h1><p>json形式でエクスポートすれば良い。<br>4系使っているとオプションで3.8系式のjsonで出力できるが、原因の切り分けが難しくなるので推奨しない。<br>テクスチャパックのオプションは基本いじる項目はないが、scaleだけいじることはある。<br>イラストを大きいサイズで作って出力するときscaleを0.5とかにすれば出力するテクスチャの解像度を減らせる。  </p><h1 id="トラックの重ねの話"><a href="#トラックの重ねの話" class="headerlink" title="トラックの重ねの話"></a>トラックの重ねの話</h1><p>トラック(アニメーション)を重ねることができる。<br>私は待機アニメーションの上にまばたきアニメーションを重ねるなどする。  </p><p>例:<br>トラック0 : 待機アニメーション<br>トラック1 : まばたき  </p><p>まばたきと待機の周期が違うし、まばたきを共通で使いまわしたいからこのような重ねる。<br>PictureSpine.jsはトラックの削除がないので、削除する場合は何もないアニメーションで上書きすればトラックを無効化できるのでそれで対応する。<br>あるいは自分でpixi-spine.jsにある<code>setEmptyAnimation</code>の実装すれば良い。  </p><p>トラックごとのアルファ値を設定する機能があるが、ここでいうアルファは透明度ではない。<br>どのくらいの影響度で重ねるか。ダメージ食らって足を引きずるのを徐々に強くするみたいなときに使うらしいが、私は使ったこと無い。</p><h1 id="ミックス"><a href="#ミックス" class="headerlink" title="ミックス"></a>ミックス</h1><p>ミックスはアニメーション間の補完の話。<br>何も設定しないと瞬時にアニメーション切り替わって、シームレスじゃないので適当に設定しておく。<br>Spine側のエディタではデフォで0.2。<br>私はデフォで適当に設定して、個別に必要なところは設定している。  </p><h1 id="透明度"><a href="#透明度" class="headerlink" title="透明度"></a>透明度</h1><p>Spineはパーツの重ねているので透明にすると個々のパーツが重ねているのが見えてしまう。<br>この問題は解決するのが難しいので、ほとんど諦めるという選択をする。<br>表現の仕方を変えるのが一番コストが低く、現実的な解決策。</p><h1 id="Scale"><a href="#Scale" class="headerlink" title="Scale"></a>Scale</h1><p>Spineで出力時にscaleを変えてもテクスチャの解像度が変わるだけで、モデルのサイズが変わるわけではない。<br>ツクール側でscaleを変えないといけない。</p><h1 id="モザイク"><a href="#モザイク" class="headerlink" title="モザイク"></a>モザイク</h1><p>元ファイルもモザイク処理をする必要ありますが、モザイクしているパーツをメッシュ変形すると違和感がすごい。<br>だから元ファイルをモザイク処理した上で用意されているモザイク機能を上からかけるのが良いのではないか。</p><h1 id="シーン切り替え"><a href="#シーン切り替え" class="headerlink" title="シーン切り替え"></a>シーン切り替え</h1><p>アニメーション状態を保存しているので、メニューを開いたり、場所移動しても前のアニメーションを継続できる</p><h1 id="イベント"><a href="#イベント" class="headerlink" title="イベント"></a>イベント</h1><p>Spine側で設定したオーディオをツクール側で再生したり、スイッチ操作する機能がある。<br>Spine側で設定したオーディオは別にエクスポートしたファイルに含まれるわけではない。ファイル名を参照したいだけ。<br>スイッチ操作はイベントに直で設定するのではなく、タイムライン上で設定しないといけない。微妙にハマった。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;ツクールのSpine実装の勉強会をする予定で作った資料を上げる。&lt;br&gt;ほぼ自分用のメモ書きなので、細かいところは詳細を省く。&lt;/p&gt;
+&lt;h1 id=&quot;基本&quot;&gt;&lt;a href=&quot;#基本&quot; class=&quot;headerlink&quot; title=&quot;基本&quot;&gt;&lt;/a&gt;基本&lt;/h1&gt;&lt;p
+      
+    
+    </summary>
+    
+    
+      <category term="RPGツクールMZ" scheme="https://kido0617.github.io/categories/RPGMakerMZ/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>簡易ログメッセージプラグイン</title>
@@ -235,30 +260,6 @@
     
     
       <category term="Spine" scheme="https://kido0617.github.io/categories/Spine/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>敵AIとビジュアルスクリプティング</title>
-    <link href="https://kido0617.github.io/unity/2021-06-21-enemy-ai/"/>
-    <id>https://kido0617.github.io/unity/2021-06-21-enemy-ai/</id>
-    <published>2021-06-20T15:00:00.000Z</published>
-    <updated>2021-06-20T15:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="経緯"><a href="#経緯" class="headerlink" title="経緯"></a>経緯</h2><p>アクションゲームなど敵のAIが必要なケースは多々あります。<br>その際、FSMやビヘイビアツリーなどといった考え方を用いて実装する方法が一般的だと思います。<br>そういったアセットが多々あり、ビジュアルスクリプティングでAIを作るということはよく取られる手法です。<br>私が好きなアクションゲームの Hollow Knight はFSMを実装できるPlaymakerで敵AIを作っているらしく、私もそれに習ってPlaymakerで実装を始めました。<br>しかし、これが私に合わなくて、採用できなかったのでそのことを書いておきたいと思います。</p><h2 id="ビジュアルスクリプティングでAIを作るということ"><a href="#ビジュアルスクリプティングでAIを作るということ" class="headerlink" title="ビジュアルスクリプティングでAIを作るということ"></a>ビジュアルスクリプティングでAIを作るということ</h2><p>個人的につらかったのは以下の点です。<br>敵AIの挙動を考え、プログラムで実装する方法を考えます。<br>その方法を思いついたあとに、これをPlaymakerで実装するにはどうしたら良いのかさらに考えないといけないのです。<br>プログラムで普通に実装するならイメージできるのですが、Playmaker上で再現する方法がパッと出てこないということが多々ありました。<br>Playmakerで敵AIを作る動画などを観ても、なんとなく二度手間というか、思考のロジックが自分に合っていないような気がします。<br>急がば回れでビジュアルスクリプティングで敵AIを作る環境をちゃんと整えれば最終的な効率が上がるのか？とも思いましたが、私は断念してしまいました。</p><h2 id="結果"><a href="#結果" class="headerlink" title="結果"></a>結果</h2><p>UnityのFSMの実装でポピュラーな以下のコードが公開されています。<br><a href="https://github.com/thefuntastic/Unity3d-Finite-State-Machine">thefuntastic / Unity3d-Finite-State-Machine</a><br>敵ごとにこの実装を用いて、敵AIを作ることにしました。<br>コードベースなのでGitでdiffも見やすいし、ダイレクトに書けるので性に合っていると感じました。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;経緯&quot;&gt;&lt;a href=&quot;#経緯&quot; class=&quot;headerlink&quot; title=&quot;経緯&quot;&gt;&lt;/a&gt;経緯&lt;/h2&gt;&lt;p&gt;アクションゲームなど敵のAIが必要なケースは多々あります。&lt;br&gt;その際、FSMやビヘイビアツリーなどといった考え方を用いて実装する方法が一
-      
-    
-    </summary>
-    
-    
-      <category term="Unity" scheme="https://kido0617.github.io/categories/Unity/"/>
     
     
   </entry>
