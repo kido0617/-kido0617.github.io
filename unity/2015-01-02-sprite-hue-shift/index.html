@@ -1,45 +1,38 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="utf-8">
   
-  <title>Sprite、Texture の 色相をシフトする | Unity | kido Tech Blog</title>
-  
-  <meta name="description" content="はじめにSpriteの画像の色相をシフトしたい。下図のように色相をずらせば、一つの画像でいろいろできる。Sprite RendererにデフォルトにあるColorは色を重ねるだけで、色相を変えるわけではない。また、そういった機能も見当たらないので実装してみることとした。ちなみに英語では hue shift というので、検索するときはそれが有効です。  Sprite内の指定したpixel座標の色を取">
-  <meta name="author" content="kido">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      Sprite、Texture の 色相をシフトする | Unity | kido Tech Blog
+    </title>
 
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="Sprite、Texture の 色相をシフトする | Unity | kido Tech Blog">
-  <meta property="og:url" content="https://kido0617.github.io/unity/2015-01-02-sprite-hue-shift/">
-  <meta property="og:site_name" content="kido Tech Blog">
-  <meta property="og:description" content="はじめにSpriteの画像の色相をシフトしたい。下図のように色相をずらせば、一つの画像でいろいろできる。Sprite RendererにデフォルトにあるColorは色を重ねるだけで、色相を変えるわけではない。また、そういった機能も見当たらないので実装してみることとした。ちなみに英語では hue shift というので、検索するときはそれが有効です。  Sprite内の指定したpixel座標の色を取">
-  <meta property="og:image" content="https://kido0617.github.io/css/images/ogp.png">
-  <meta property="og:locale" content="ja_JP">
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:image" content="https://kido0617.github.io/css/images/twitter-summary.png" />
-  <meta name="twitter:creator" content="@kido0617">
+    <meta name="description" content="はじめにSpriteの画像の色相をシフトしたい。下図のように色相をずらせば、一つの画像でいろいろできる。Sprite RendererにデフォルトにあるColorは色を重ねるだけで、色相を変えるわけではない。また、そういった機能も見当たらないので実装してみることとした。ちなみに英語では hue shift というので、検索するときはそれが有効です。  Sprite内の指定したpixel座標の色を取">
+    <meta name="author" content="kido">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Sprite、Texture の 色相をシフトする | Unity | kido Tech Blog">
+    <meta property="og:url" content="https://kido0617.github.io/unity/2015-01-02-sprite-hue-shift/">
+    <meta property="og:site_name" content="kido Tech Blog">
+    <meta property="og:description" content="はじめにSpriteの画像の色相をシフトしたい。下図のように色相をずらせば、一つの画像でいろいろできる。Sprite RendererにデフォルトにあるColorは色を重ねるだけで、色相を変えるわけではない。また、そういった機能も見当たらないので実装してみることとした。ちなみに英語では hue shift というので、検索するときはそれが有効です。  Sprite内の指定したpixel座標の色を取">
+    <meta property="og:image" content="https://kido0617.github.io/css/images/ogp.png">
+    <meta property="og:locale" content="ja_JP">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://kido0617.github.io/css/images/twitter-summary.png" />
+    <meta name="twitter:creator" content="@kido0617">
 
 
-  <link rel="alternate" href="/atom.xml" title="kido Tech Blog" type="application/atom+xml">
-  <link rel="icon" href="/favicon.ico">
+    <link rel="alternate" href="/atom.xml" title="kido Tech Blog" type="application/atom+xml">
+    <link rel="icon" href="/favicon.ico">
 
-  
+    
 <link rel="stylesheet" href="/css/style.css">
 
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46760030-4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-46760030-4');
-  </script>
 
 <meta name="generator" content="Hexo 5.4.0"></head>
-
 <body>
   <div id="container">
     <div id="wrap">
@@ -178,7 +171,33 @@
     <div class="archives">
       
         
+        <a class="archive-article-block"  href="/unity/2023-12-07-linear-ui/">
+  <div class="archive-article">
+    <div class="archive-article-info">
+      <span class="archive-article-date">
+        <time datetime="2023-12-06T15:00:00.000Z">2023-12-07</time>
+      </span>
+      <span class="archive-article-category">Unity</span>
+    </div>
+    <span class="archive-article-title">Color SpaceがLinearのときUIの透明度が正しくならない</span>
+  </div>
+</a>
+      
+        
         <a class="archive-article-block"  href="/unity/2021-08-05-history-inspector/">
+  <div class="archive-article">
+    <div class="archive-article-info">
+      <span class="archive-article-date">
+        <time datetime="2021-08-04T15:00:00.000Z">2021-08-05</time>
+      </span>
+      <span class="archive-article-category">Unity</span>
+    </div>
+    <span class="archive-article-title">History Inspectorの紹介</span>
+  </div>
+</a>
+      
+        
+        <a class="archive-article-block"  href="/unity/2023-12-10-linear-ui/">
   <div class="archive-article">
     <div class="archive-article-info">
       <span class="archive-article-date">
@@ -765,7 +784,7 @@
   <div class="widget-wrap">
     <div class="widget-title">アーカイブ</div>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018</a><span class="archive-list-count">28</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/">2014</a><span class="archive-list-count">27</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/">2013</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018</a><span class="archive-list-count">28</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/">2014</a><span class="archive-list-count">27</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/">2013</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -775,7 +794,7 @@
   <div class="widget-wrap">
     <div class="widget-title">カテゴリ</div>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/">GCP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Golang</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RPGMakerMV/">RPGツクールMV</a><span class="category-list-count">37</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RPGMakerMZ/">RPGツクールMZ</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RPGMakerVXAce/">RPGツクールVXAce</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Salesforce/">Salesforce</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spine/">Spine</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity/">Unity</a><span class="category-list-count">43</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WordPress/">WordPress</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">その他</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TyranoScript/">ティラノスクリプト</a><span class="category-list-count">7</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/">GCP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Golang</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RPGMakerMV/">RPGツクールMV</a><span class="category-list-count">37</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RPGMakerMZ/">RPGツクールMZ</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RPGMakerVXAce/">RPGツクールVXAce</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Salesforce/">Salesforce</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spine/">Spine</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity/">Unity</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WordPress/">WordPress</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">その他</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TyranoScript/">ティラノスクリプト</a><span class="category-list-count">7</span></li></ul>
     </div>
   </div>
 

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kido0617.github.io/"/>
-  <updated>2023-10-04T15:00:00.000Z</updated>
+  <updated>2023-12-06T15:00:00.000Z</updated>
   <id>https://kido0617.github.io/</id>
   
   <author>
@@ -17,13 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Color SpaceがLinearのときUIの透明度が正しくならない</title>
+    <link href="https://kido0617.github.io/unity/2023-12-07-linear-ui/"/>
+    <id>https://kido0617.github.io/unity/2023-12-07-linear-ui/</id>
+    <published>2023-12-06T15:00:00.000Z</published>
+    <updated>2023-12-06T15:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>この記事は「<a href="https://adventar.org/calendars/8582">Unityゲーム開発者ギルド Advent Calendar 2023</a>」12/7の記事です。  </p><h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>デザイナーからUIの素材を頂き、UGUIのImageを使って配置したところ、想定と透明度が異なることに気づきました。<br>設定を見直したところ、どうやらColor SpaceがGammaかLinearで見た目が変わることがわかりました。<br>以下の画像のように違うのですが、Gammaのときの見た目が正しく、Linearの場合が正しくありません。   </p><p><img src="/img/2023-12-07-linear-ui/ui-different.png" alt="Color SpaceによるUIの表示の違い"></p><p>Unity 2021.3の環境でプロジェクトを立ち上げるとデフォルトがLinearなので、Linearを選択していたのですが、ここで大きく躓いてしまいました。<br>（今までデフォルトはGammaだったと思いますが、Linearがデフォルトなのは私の環境だけ？）</p><p>最初、何か設定などを見落としているのでは？と思い調べましたがそうではなく、Linearにおける半透明UIの描画処理に関しては仕様や制約といったことのようでした。</p><h2 id="シェーダーで近づける"><a href="#シェーダーで近づける" class="headerlink" title="シェーダーで近づける"></a>シェーダーで近づける</h2><p>以下のForumで話がされており、シェーダーが作成され公開もされており、近づけることは可能ですが見た目を完全に一致することはできませんでした。</p><p><a href="https://forum.unity.com/threads/linear-space-for-scene-gamma-for-ui.309016/">Linear space for scene, gamma for UI?</a></p><h2 id="URPのRendererFeatureを用いる"><a href="#URPのRendererFeatureを用いる" class="headerlink" title="URPのRendererFeatureを用いる"></a>URPのRendererFeatureを用いる</h2><p>URP限定ですが、RendererFeatureを用いて、解決することができます。<br>実際、以下の動画とGithubのサンプルを試したところ解決できることを確認できました。<br>負荷がどの程度かわからないのと採用事例などがないので少し不安でした。  </p><p><a href="https://www.youtube.com/watch?v=dUk_9-eCK9A&t=2652s">Youtube - CEDEC2022】ちょっと踏み込んだURP: エンジニアに向けた実践的なナレッジ紹介</a><br><a href="https://github.com/robin-boucher/CEDEC2022-URP">Github - CEDEC2022-URP</a></p><h2 id="PhotoshopでUIを作る場合"><a href="#PhotoshopでUIを作る場合" class="headerlink" title="PhotoshopでUIを作る場合"></a>PhotoshopでUIを作る場合</h2><p>PhotoshopでUIパーツを作る場合、<code>編集→カラー設定</code>から<code>RGBカラーブレンド部分をガンマ補正</code>をチェックし、<br>作成すると見た目を合わせたまま作成できると聞きましたが、今回、PhotoshopでUIを作成していないので私は試せていません。</p><p><img src="/img/2023-12-07-linear-ui/photoshop.png" alt="ガンマ補正"></p><h2 id="私のゲームでの対応"><a href="#私のゲームでの対応" class="headerlink" title="私のゲームでの対応"></a>私のゲームでの対応</h2><p>半透明なUIパーツが比較的多いわけではないので、デザイナーが作った素材とUnity上での表示を並べて表示し、できるだけ一致するように調整することとしました。</p><h2 id="使用バージョン"><a href="#使用バージョン" class="headerlink" title="使用バージョン"></a>使用バージョン</h2><p>Unity 2021.3.31</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;この記事は「&lt;a href=&quot;https://adventar.org/calendars/8582&quot;&gt;Unityゲーム開発者ギルド Advent Calendar 2023&lt;/a&gt;」12/7の記事です。  &lt;/p&gt;
+&lt;h2 id=&quot;概要&quot;&gt;&lt;a href=&quot;#概要&quot; cl
+      
+    
+    </summary>
+    
+    
+      <category term="Unity" scheme="https://kido0617.github.io/categories/Unity/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>ツクールでSpine導入したときのメモ</title>
     <link href="https://kido0617.github.io/rpgmaker/2023-10-05-spine/"/>
     <id>https://kido0617.github.io/rpgmaker/2023-10-05-spine/</id>
     <published>2023-10-04T15:00:00.000Z</published>
     <updated>2023-10-04T15:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<p>ツクールのSpine実装の勉強会をする予定で作った資料を上げる。<br>ほぼ自分用のメモ書きなので、細かいところは詳細を省く。</p><h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><p>pixi-spine.jsというPixi.jsコミュニティが作っているspine用のライブラリを使う。<br><a href="https://makonet.sakura.ne.jp/rpg_tkool/MVMZ/PictureSpine/document.html">PictureSpine.js</a>はそれをツクール用に使えるようにしたもの。<br>ツクールのピクチャのようにSpineを使える。</p><h1 id="Spineのバージョン"><a href="#Spineのバージョン" class="headerlink" title="Spineのバージョン"></a>Spineのバージョン</h1><p>MVはPixi.js4系なのでSpineは3.8限定<br>MZはPixi.js5系なのでSpineは3.8~4.1まで使用可能<br>PictureSpine.jsはSpine3.8基準。多分みんな3.8で作っているので安定を取るなら3.8。<br>Spine4以上を使いたい場合、pixi-spine.jsは最新のビルドをする必要ある。普通にDLできずNode.js入れてnpm install しないといけない。<br>こちらで試した限りでは細かいところは未検証だが、4系もとりあえず動いた。</p><p>Spineの3.8と4以上の差は、グラフエディタや細かな便利機能が追加されている差がある。<br>基本的な機能は3.8時点で完成されているが、最新使えるなら使いたい。</p><h1 id="Spineのエクスポート"><a href="#Spineのエクスポート" class="headerlink" title="Spineのエクスポート"></a>Spineのエクスポート</h1><p>json形式でエクスポートすれば良い。<br>4系使っているとオプションで3.8系式のjsonで出力できるが、原因の切り分けが難しくなるので推奨しない。<br>テクスチャパックのオプションは基本いじる項目はないが、scaleだけいじることはある。<br>イラストを大きいサイズで作って出力するときscaleを0.5とかにすれば出力するテクスチャの解像度を減らせる。  </p><h1 id="トラックの重ねの話"><a href="#トラックの重ねの話" class="headerlink" title="トラックの重ねの話"></a>トラックの重ねの話</h1><p>トラック(アニメーション)を重ねることができる。<br>私は待機アニメーションの上にまばたきアニメーションを重ねるなどする。  </p><p>例:<br>トラック0 : 待機アニメーション<br>トラック1 : まばたき  </p><p>まばたきと待機の周期が違うし、まばたきを共通で使いまわしたいからこのような重ねる。<br>PictureSpine.jsはトラックの削除がないので、削除する場合は何もないアニメーションで上書きすればトラックを無効化できるのでそれで対応する。<br>あるいは自分でpixi-spine.jsにある<code>setEmptyAnimation</code>の実装すれば良い。  </p><p>トラックごとのアルファ値を設定する機能があるが、ここでいうアルファは透明度ではない。<br>どのくらいの影響度で重ねるか。ダメージ食らって足を引きずるのを徐々に強くするみたいなときに使うらしいが、私は使ったこと無い。</p><h1 id="ミックス"><a href="#ミックス" class="headerlink" title="ミックス"></a>ミックス</h1><p>ミックスはアニメーション間の補完の話。<br>何も設定しないと瞬時にアニメーション切り替わって、シームレスじゃないので適当に設定しておく。<br>Spine側のエディタではデフォで0.2。<br>私はデフォで適当に設定して、個別に必要なところは設定している。  </p><h1 id="透明度"><a href="#透明度" class="headerlink" title="透明度"></a>透明度</h1><p>Spineはパーツの重ねているので透明にすると個々のパーツが重ねているのが見えてしまう。<br>この問題は解決するのが難しいので、ほとんど諦めるという選択をする。<br>表現の仕方を変えるのが一番コストが低く、現実的な解決策。</p><h1 id="Scale"><a href="#Scale" class="headerlink" title="Scale"></a>Scale</h1><p>Spineで出力時にscaleを変えてもテクスチャの解像度が変わるだけで、モデルのサイズが変わるわけではない。<br>ツクール側でscaleを変えないといけない。</p><h1 id="モザイク"><a href="#モザイク" class="headerlink" title="モザイク"></a>モザイク</h1><p>元ファイルもモザイク処理をする必要ありますが、モザイクしているパーツをメッシュ変形すると違和感がすごい。<br>だから元ファイルをモザイク処理した上で用意されているモザイク機能を上からかけるのが良いのではないか。</p><h1 id="シーン切り替え"><a href="#シーン切り替え" class="headerlink" title="シーン切り替え"></a>シーン切り替え</h1><p>アニメーション状態を保存しているので、メニューを開いたり、場所移動しても前のアニメーションを継続できる</p><h1 id="イベント"><a href="#イベント" class="headerlink" title="イベント"></a>イベント</h1><p>Spine側で設定したオーディオをツクール側で再生したり、スイッチ操作する機能がある。<br>Spine側で設定したオーディオは別にエクスポートしたファイルに含まれるわけではない。ファイル名を参照したいだけ。<br>スイッチ操作はイベントに直で設定するのではなく、タイムライン上で設定しないといけない。微妙にハマった。</p>]]></content>
+    <content type="html"><![CDATA[<p>ツクールのSpine実装の勉強会をする予定で作った資料を上げる。<br>ほぼ自分用のメモ書きなので、細かいところは詳細を省く。</p><h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><p>pixi-spine.jsというPixi.jsコミュニティが作っているspine用のライブラリを使う。<br><a href="https://makonet.sakura.ne.jp/rpg_tkool/MVMZ/PictureSpine/document.html">PictureSpine.js</a>はそれをツクール用に使えるようにしたもの。<br>ツクールのピクチャのようにSpineを使える。</p><h1 id="Spineのバージョン"><a href="#Spineのバージョン" class="headerlink" title="Spineのバージョン"></a>Spineのバージョン</h1><p>MVはPixi.js4系なのでSpineは3.8限定<br>MZはPixi.js5系なのでSpineは3.8~4.1まで使用可能<br>PictureSpine.jsはSpine3.8基準。多分みんな3.8で作っているので安定を取るなら3.8。<br>Spine4以上を使いたい場合、pixi-spine.jsは最新のビルドをする必要ある。普通にDLできずNode.js入れてnpm install しないといけない。<br>こちらで試した限りでは細かいところは未検証だが、4系もとりあえず動いた。</p><p>Spineの3.8と4以上の差は、グラフエディタや細かな便利機能が追加されている差がある。<br>基本的な機能は3.8時点で完成されているが、最新使えるなら使いたい。</p><h1 id="Spineのエクスポート"><a href="#Spineのエクスポート" class="headerlink" title="Spineのエクスポート"></a>Spineのエクスポート</h1><p>json形式でエクスポートすれば良い。<br>4系使っているとオプションで3.8系式のjsonで出力できるが、原因の切り分けが難しくなるので推奨しない。<br>テクスチャパックのオプションは基本いじる項目はないが、scaleだけいじることはある。<br>イラストを大きいサイズで作って出力するときscaleを0.5とかにすれば出力するテクスチャの解像度を減らせる。  </p><h1 id="トラックの重ねの話"><a href="#トラックの重ねの話" class="headerlink" title="トラックの重ねの話"></a>トラックの重ねの話</h1><p>トラック(アニメーション)を重ねることができる。<br>私は待機アニメーションの上にまばたきアニメーションを重ねるなどする。  </p><p>例:<br>トラック0 : 待機アニメーション<br>トラック1 : まばたき  </p><p>まばたきと待機の周期が違うし、まばたきを共通で使いまわしたいからこのような重ねる。<br>PictureSpine.jsはトラックの削除がないので、削除する場合は何もないアニメーションで上書きすればトラックを無効化できるのでそれで対応する。<br>あるいは自分でpixi-spine.jsにある<code>setEmptyAnimation</code>の実装すれば良い。  </p><p>トラックごとのアルファ値を設定する機能があるが、ここでいうアルファは透明度ではない。<br>どのくらいの影響度で重ねるか。ダメージ食らって足を引きずるのを徐々に強くするみたいなときに使うらしいが、私は使ったこと無い。</p><h1 id="ミックス"><a href="#ミックス" class="headerlink" title="ミックス"></a>ミックス</h1><p>ミックスはアニメーション間の補完の話。<br>何も設定しないと瞬時にアニメーション切り替わって、シームレスじゃないので適当に設定しておく。<br>Spine側のエディタではデフォで0.2。<br>私はデフォで適当に設定して、個別に必要なところは設定している。  </p><h1 id="透明度"><a href="#透明度" class="headerlink" title="透明度"></a>透明度</h1><p>setColor(1, 1, 1, 0.1)などとすれば、全体を透明にできる。</p><h1 id="Scale"><a href="#Scale" class="headerlink" title="Scale"></a>Scale</h1><p>Spineで出力時にscaleを変えてもテクスチャの解像度が変わるだけで、モデルのサイズが変わるわけではない。<br>ツクール側でscaleを変えないといけない。</p><h1 id="モザイク"><a href="#モザイク" class="headerlink" title="モザイク"></a>モザイク</h1><p>元ファイルもモザイク処理をする必要ありますが、モザイクしているパーツをメッシュ変形すると違和感がすごい。<br>だから元ファイルをモザイク処理した上で用意されているモザイク機能を上からかけるのが良いのではないか。</p><h1 id="シーン切り替え"><a href="#シーン切り替え" class="headerlink" title="シーン切り替え"></a>シーン切り替え</h1><p>アニメーション状態を保存しているので、メニューを開いたり、場所移動しても前のアニメーションを継続できる</p><h1 id="イベント"><a href="#イベント" class="headerlink" title="イベント"></a>イベント</h1><p>Spine側で設定したオーディオをツクール側で再生したり、スイッチ操作する機能がある。<br>Spine側で設定したオーディオは別にエクスポートしたファイルに含まれるわけではない。ファイル名を参照したいだけ。<br>スイッチ操作はイベントに直で設定するのではなく、タイムライン上で設定しないといけない。微妙にハマった。</p>]]></content>
     
     <summary type="html">
     
@@ -163,6 +188,30 @@
   </entry>
   
   <entry>
+    <title>History Inspectorの紹介</title>
+    <link href="https://kido0617.github.io/unity/2023-12-10-linear-ui/"/>
+    <id>https://kido0617.github.io/unity/2023-12-10-linear-ui/</id>
+    <published>2021-08-04T15:00:00.000Z</published>
+    <updated>2021-08-04T15:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>この記事は「<a href="https://assetstore.info/eventandcontest/adventcalendar/summer-advent-calendar-2021/">Unity アセット真夏のアドベントカレンダー 2021 Summer!</a>」8/5の記事です。  </p><h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Unityでアセットの量が膨大なプロジェクトを扱っていると、必要なアセットを探すのに苦労します。<br>そういったときに手助けになるアセットが今回紹介する「<a href="https://assetstore.unity.com/packages/tools/utilities/history-inspector-44279?utm_source=twitter&utm_medium=social&utm_campaign=jp-advent-calendar-summer">History Inspector</a>」です。<br>このアセットは選択したファイルの履歴を保存し、その履歴にアクセスする手段を提供するアセットです。<br>直近で触ったファイルをもう一度いじる必要があるケースはよくあり、そういったときにこのアセットがあると便利です。  </p><h2 id="使い方"><a href="#使い方" class="headerlink" title="使い方"></a>使い方</h2><p>History Inspectorをインストールした後、<code>Window -&gt; History Inspector -&gt; Open History Inspector window</code>をクリックすると、以下のビューが表示されます。  </p><p><img src="/img/2021-08-05-history-inspector/hi1.jpg" alt="History Inspectorの表示"></p><p>以下動画のように左右の矢印ボタンでファイルの選択履歴を移動できます。  </p><p><video src="/img/2021-08-05-history-inspector/movie1.mp4" width="416" controls></video></p><p>また、上記図の現在選択しているファイル「SampleScene」となっているところをクリックすると以下のような履歴一覧が表示されます。</p><p><img src="/img/2021-08-05-history-inspector/hi2.jpg" alt="履歴一覧の表示"></p><p>この履歴一覧で鍵マークのアイコンがありますが、これはある種のお気に入り機能のようなものです。<br>選択履歴に関係なく、常に一番上に表示しておくことができます。<br>その次の<code>(1)</code>の数字はファイル選択数を指します。複数選択した場合もそれが履歴に残るため、このような数字が表示されています。</p><p><video src="/img/2021-08-05-history-inspector/movie2.mp4" width="416" controls></video></p><h2 id="アセットのファイル構成"><a href="#アセットのファイル構成" class="headerlink" title="アセットのファイル構成"></a>アセットのファイル構成</h2><p>ソースコードが付属しているので、改造が可能です。<br>履歴にオブジェクト名しか出ないので、パスも表示したい思いが個人的に少しあります。</p><h2 id="履歴の保存先"><a href="#履歴の保存先" class="headerlink" title="履歴の保存先"></a>履歴の保存先</h2><p>このアセットは履歴を<code>/Assets/HistoryInspector/Database/selectionlist.asset</code>に保存します。<br>バージョン管理する場合は、以下のファイルとフォルダを除外すると良いと思います。  </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/Assets/HistoryInspector/Database/</span><br><span class="line">/Assets/HistoryInspector/Database.meta</span><br></pre></td></tr></table></figure><h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>今回紹介したHistory Inspectorは選択したファイルの履歴を保存し、アクセスしやすくするアセットでした。<br>History Inspectorに履歴をロックするお気に入りのような機能がありますが、個人的にお気に入り機能ではオススメしたいアセットが別にあります。<br>それは「<a href="https://assetstore.unity.com/packages/tools/utilities/kris-favorite-assets-143105?utm_source=twitter&utm_medium=social&utm_campaign=jp-advent-calendar-summer">Kris’ Favorite Assets</a>」です。<br>こちらは頻繁にアクセスするファイルをお気に入り登録できるので、併せて利用すると捗ります。<br>具体的に「<a href="/unity/2020-08-29-krisFavoriteAssets/">Kris’ Favorite Assets が便利</a>」で紹介しています。</p><h2 id="使用バージョン"><a href="#使用バージョン" class="headerlink" title="使用バージョン"></a>使用バージョン</h2><p>Unity 2019.4.29<br>History Inspector 1.2</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;この記事は「&lt;a href=&quot;https://assetstore.info/eventandcontest/adventcalendar/summer-advent-calendar-2021/&quot;&gt;Unity アセット真夏のアドベントカレンダー 2021 Summer!&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="Unity" scheme="https://kido0617.github.io/categories/Unity/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>リリース時のチェック項目</title>
     <link href="https://kido0617.github.io/rpgmaker/2021-07-16-deploy-check/"/>
     <id>https://kido0617.github.io/rpgmaker/2021-07-16-deploy-check/</id>
@@ -203,57 +252,6 @@
         &lt;p&gt;基本的に以下のURLのドキュメントを参考にしています。  &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://ja.esotericsoftware.com/spine-unity&quot;&gt;spine-unity Runtime Documentation&lt;/a&gt;&lt;/li
-      
-    
-    </summary>
-    
-    
-      <category term="Spine" scheme="https://kido0617.github.io/categories/Spine/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>プレビューとランタイムでの再生が異なる問題</title>
-    <link href="https://kido0617.github.io/spine/2021-06-23-animation-cleanup/"/>
-    <id>https://kido0617.github.io/spine/2021-06-23-animation-cleanup/</id>
-    <published>2021-06-22T15:00:00.000Z</published>
-    <updated>2021-06-22T15:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Spineのエディタ上でトラックを複数用いて、プレビューでアニメーションを確認します。<br>同様にランタイム側（私の場合はUnity)でトラックを重ねて再生したところ、微妙にアニメーションが異なってしまいました。  </p><p>これは、Exportのときに<code>Animation clean up</code>を選択して不要なキーを削除していたからでした。<br>トラックの重ね方があまり正しくないのだと思うのですが、以下のような状況です。  </p><p>トラック1: ボーンAを90度曲げる<br>トラック2: ボーンAをデフォルトの角度に上書きする</p><p>デフォルトの角度のキーはAnimation clean up で削除されてしまうので、トラック2で上書けなかったということです。<br>Animation clean upの挙動的にも正しく、私の作り方に問題があったと思います。  </p><p>ちなみにExport時でなくとも、該当のアニメーションを選択した状態でツリービューの下にあるclean upボタンを押すとどのキーが消されるかは確認できます。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Spineのエディタ上でトラックを複数用いて、プレビューでアニメーションを確認します。&lt;br&gt;同様にランタイム側（私の場合はUnity)でトラックを重ねて再生したところ、微妙にアニメーションが異なってしまいました。  &lt;/p&gt;
-&lt;p&gt;これは、Exportのときに&lt;code&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="Spine" scheme="https://kido0617.github.io/categories/Spine/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>参考資料まとめ</title>
-    <link href="https://kido0617.github.io/spine/2021-06-22-reference/"/>
-    <id>https://kido0617.github.io/spine/2021-06-22-reference/</id>
-    <published>2021-06-21T15:00:00.000Z</published>
-    <updated>2021-06-21T15:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>個人的にSpineを勉強するのに役立ったサイトなどのまとめです。  </p><h2 id="エディタ編"><a href="#エディタ編" class="headerlink" title="エディタ編"></a>エディタ編</h2><ul><li><p><a href="http://ja.esotericsoftware.com/spine-user-guide">Spineユーザーガイド</a><br>公式のユーザガイドは全ての画面の説明が載っているのでよく見返します。<br>このボタンの機能なんだっけ？っていうときはここを見ます。<br>たまに表示言語が英語にしかない情報があります。</p></li><li><p><a href="http://ja.esotericsoftware.com/spine-cheat-sheet">Spine Cheat Sheet</a><br>ショートカットキーのリファレンス。覚えると効率が違います。<br>LMBはLeft Mouse Buttonの略。RMBは右クリック。</p></li><li><p><a href="https://cgworld.jp/regular/201908-spine1.html">連載　Spineではじめる、動くイラスト制作 | CGWORLD.jp</a><br>チュートリアル形式で実際にキャラクターアニメーションを１から作る連載で、わかりやすくて勉強になります。<br>サンプルファイルもついているので一緒に作りながらできますし、完成版もDLできます。<br>コンストレイントとか最初難しかったのですが、慣れてきてもう一度このサイト見ると納得できました。</p></li><li><p><a href="https://www2.slideshare.net/G2Studios/spiners-meetup-vol1">Spiners MeetUp vol.1 アニメーション制作フロー比較と実例紹介 </a><br>少し慣れてきたころにこれを読むと、実際の現場の意見が聞けて納得感があります。<br>苦労するところとか考慮するべきところの共感ができて安心します。<br>Spiners MeetUp はこれ以外にもシリーズで公開されていて、どれも非常に勉強になるので検索すると良いと思います。  </p></li><li><p><a href="https://www.artstation.com/marketplace/p/03Rl/halloween-animation-spine-full-real-time-process">HALLOWEEN animation SPINE: Full real time process</a><br>上記MeetUpの資料で紹介されていたもので、有料ですが3時間近くのメイキングの動画をDLできます。<br>説明音声はありませんが、ディティールにこだわる制作風景が見られて参考になります。<br>ボーンとかに名前つけないでガンガン作っていくのがすごいと思いました。</p></li><li><p><a href="https://developers.cyberagent.co.jp/blog/archives/16096/">SpineでGF(仮)のガールを動かしてみた（メイキング1/2:Spine基礎編）| CyberAgent Developers Blog</a><br>実際のキャラクターをSpineで動かす過程が見られるので参考になります。<br>かわいいキャラクターのちゃんとした製作工程が見られるのは貴重で、目パチ、顔の角度などの作成など素晴らしい資料です。  </p></li><li><p><a href="https://developers.cyberagent.co.jp/blog/archives/26932/">ゲームを彩るちびキャラたち！Spine量産ノウハウ大全〈前編：衣装・キャラ替え〉| CyberAgent Developers Blog</a><br>上記同様にCyberAgentさんの資料ですが、こちらも実際の現場のノウハウがつまっていて、参考になります。</p></li><li><p><a href="https://note.com/appai/n/nf4a225891c2a">Spineエディタのスキン機能を理解する｜アップルパイ｜note </a><br>Spineのスキン機能はサンプルプロジェクト触ると、何が起きたのかわからず混乱するのですが、同じ心境で書かれていて参考になります。  </p></li><li><p><a href="http://ja.esotericsoftware.com/blog">公式ブログ</a><br>新バージョンの情報などのアナウンスのブログかと思っていたら、メッシュ割りのヒントとか、アニメーションのコツとか情報が充実しています。</p></li><li><p><a href="http://ja.esotericsoftware.com/spine-examples">公式のプロジェクト例</a><br>機能に沿ったプロジェクト例が説明と共にあるので、やはり参考になります。  </p></li><li><p><a href="http://ja.esotericsoftware.com/spine-twitch">公式 Spine Twitchストリーミング</a><br>公式のアニメータの方が配信するチュートリアル動画です。<br>実際に手を動かして作る工程が観られるので勉強になるのですが、結構長いので目的にあった知りたい箇所を観たりしています。<br>完成ファイルも公開されています。</p></li><li><p><a href="http://ja.esotericsoftware.com/spine-tips">公式 Spine Tips</a><br>短い説明文と動画のTips集です。<br>こんなことできるんだなぁと眺めるのに面白いですし、いろいろ役立つ情報があります。</p></li><li><p><a href="https://github.com/EsotericSoftware/spine-scripts/tree/master/photoshop">spine-scripts/photoshop/</a><br>公式のPhotoshopからSpine用にインポートファイルを生成するスクリプトです。<br>オプションやタグがいろいろあるので、ここのページも時々参照します。</p></li></ul><h2 id="アニメーションの基礎編"><a href="#アニメーションの基礎編" class="headerlink" title="アニメーションの基礎編"></a>アニメーションの基礎編</h2><ul><li><a href="https://www.amazon.co.jp/dp/4766121961">増補 アニメーターズサバイバルキット</a><br>Spineで公式におすすめされている本です。翻訳版があって良かったと思いました。<br>海外アニメの手書きのアニメーターの技術が主なのですが、どうやって生き生きとしたアニメーションを作るのかなど、ベースの知識として勉強になります。<br>読み物としても面白かったです。</li></ul><h2 id="ランタイム編"><a href="#ランタイム編" class="headerlink" title="ランタイム編"></a>ランタイム編</h2><p>Unityでしか使用したことないので、Unityユーザ視点です。<br>ランタイムの情報も公式が一番充実しています。</p><ul><li><p><a href="http://ja.esotericsoftware.com/spine-runtimes-guide">Spine Runtimesガイド</a><br>これは、Unityに限らずランタイムで動かすことのベースとなる知識です。読んでおくとイメージしやすいです。</p></li><li><p><a href="http://ja.esotericsoftware.com/spine-unity">spine-unity Runtime Documentation</a><br>Unityで実装するときのドキュメントです。やはり公式が一番。</p></li><li><p><a href="https://ja.esotericsoftware.com/spine-asset-packs">アセットパック</a><br>公式で販売しているアセットパックですが、これにUnityのプロジェクトがついてきます。<br>ガンマンの方のパックを購入しました。上のURLだとUnity5としか書いてませんが2019版もちゃんと付いてきました。<br>ショットガンとか両手持ちの銃の実装が見られるので面白いです。  </p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;個人的にSpineを勉強するのに役立ったサイトなどのまとめです。  &lt;/p&gt;
-&lt;h2 id=&quot;エディタ編&quot;&gt;&lt;a href=&quot;#エディタ編&quot; class=&quot;headerlink&quot; title=&quot;エディタ編&quot;&gt;&lt;/a&gt;エディタ編&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href
       
     
     </summary>
