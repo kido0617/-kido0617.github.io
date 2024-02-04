@@ -1,29 +1,23 @@
- <section class="archives-wrap">
+<section class="archives-wrap">
   <h1 class="archive-h1">
     <% if(page.year) { %>
       <%- page.year %>年の記事一覧
-    <% } else if(page.category) { %>
-      <%- page.category %>カテゴリの記事一覧
-    <% } else { %>
-      新着記事一覧
-    <% } %>  
+        <% } else if(page.category) { %>
+          <%- page.category %>カテゴリの記事一覧
+            <% } else { %>
+              新着記事一覧
+              <% } %>
   </h1>
 
   <% page.posts.each(function(post, i){ %>
-      <%- partial('archive-post', {post: post, needCategory: needCategory}) %>
-  <% }) %>
+    <%- partial('archive-post', {post: post, needCategory: needCategory}) %>
+      <% }) %>
 </section>
 
 
-<%- partial('footer-ad') %>
-
-
-<% if (page.total > 1){ %>
+<% if (page.total> 1){ %>
   <nav id="page-nav">
-    <% var prev_text = "&lt; " + __('prev');var next_text = __('next') + " &gt;"%>
-    <%- paginator({
-      prev_text: prev_text,
-      next_text: next_text
-    }) %>
+    <% var prev_text="&lt; " + __('prev');var next_text=__('next') + " &gt;" %>
+      <%- paginator({ prev_text: prev_text, next_text: next_text }) %>
   </nav>
-<% } %>
+  <% } %>

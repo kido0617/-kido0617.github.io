@@ -10,7 +10,6 @@ fancybox: false
 # Sidebar
 sidebar: right
 widgets:
-- ad
 - author
 - archive
 - category
