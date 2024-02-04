@@ -30,7 +30,8 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1232486070209734"
+        crossorigin="anonymous"></script>
 
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body>
@@ -84,11 +85,15 @@
         <section id="main"><article id="post-go/2016-08-08-map-copy" class="article article-type-post">
   <div class="article-inner">
     <header class="article-header">
-      <h1 class="article-title">go言語のmap、sliceのコピー</h1>
+      <h1 class="article-title">
+        go言語のmap、sliceのコピー
+      </h1>
       <div class="article-meta">
         <a class="article-category-link" href="/categories/Go/">Golang</a>
         <span class="article-date">
-          公開日:<time datetime="2016-08-07T15:00:00.000Z">2016-08-08</time>
+          公開日:<time datetime="2016-08-07T15:00:00.000Z">
+            2016-08-08
+          </time>
         </span>
       </div>
     </header>
@@ -107,54 +112,37 @@
 
     </div>
     <footer class="article-footer">
-      <a href="https://twitter.com/intent/tweet?text=go%E8%A8%80%E8%AA%9E%E3%81%AEmap%E3%80%81slice%E3%81%AE%E3%82%B3%E3%83%94%E3%83%BC%20%7C%20Golang%20%7C%20kido tech blog%0a&url=https%3A%2F%2Fkido0617.github.io%2Fgo%2F2016-08-08-map-copy%2F" class="article-share-twitter" target="_blank" title="Twitter">
+      <a href="https://twitter.com/intent/tweet?text=go%E8%A8%80%E8%AA%9E%E3%81%AEmap%E3%80%81slice%E3%81%AE%E3%82%B3%E3%83%94%E3%83%BC%20%7C%20Golang%20%7C%20kido tech blog%0a&url=https%3A%2F%2Fkido0617.github.io%2Fgo%2F2016-08-08-map-copy%2F"
+        class="article-share-twitter" target="_blank" title="Twitter">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
-        <path d="M512 113.2c-18.8 8.4-39.1 14-60.3 16.5 21.7-13 38.3-33.6 46.2-58.1-20.3 12-42.8 20.8-66.7 25.5-19.2-20.4-46.5-33.1-76.7-33.1-58 0-105 47-105 105 0 8.2 0.9 16.2 2.7 23.9-87.3-4.4-164.7-46.2-216.5-109.8-9 15.5-14.2 33.6-14.2 52.8 0 36.4 18.5 68.6 46.7 87.4-17.2-0.5-33.4-5.3-47.6-13.1 0 0.4 0 0.9 0 1.3 0 50.9 36.2 93.4 84.3 103-8.8 2.4-18.1 3.7-27.7 3.7-6.8 0-13.3-0.7-19.8-1.9 13.4 41.7 52.2 72.1 98.1 73-36 28.2-81.2 45-130.5 45-8.5 0-16.8-0.5-25.1-1.5 46.6 29.9 101.8 47.2 161.1 47.2 193.2 0 298.9-160.1 298.9-298.9 0-4.6-0.1-9.1-0.3-13.6 20.5-14.7 38.3-33.2 52.4-54.3z"></path>
+          <path
+            d="M512 113.2c-18.8 8.4-39.1 14-60.3 16.5 21.7-13 38.3-33.6 46.2-58.1-20.3 12-42.8 20.8-66.7 25.5-19.2-20.4-46.5-33.1-76.7-33.1-58 0-105 47-105 105 0 8.2 0.9 16.2 2.7 23.9-87.3-4.4-164.7-46.2-216.5-109.8-9 15.5-14.2 33.6-14.2 52.8 0 36.4 18.5 68.6 46.7 87.4-17.2-0.5-33.4-5.3-47.6-13.1 0 0.4 0 0.9 0 1.3 0 50.9 36.2 93.4 84.3 103-8.8 2.4-18.1 3.7-27.7 3.7-6.8 0-13.3-0.7-19.8-1.9 13.4 41.7 52.2 72.1 98.1 73-36 28.2-81.2 45-130.5 45-8.5 0-16.8-0.5-25.1-1.5 46.6 29.9 101.8 47.2 161.1 47.2 193.2 0 298.9-160.1 298.9-298.9 0-4.6-0.1-9.1-0.3-13.6 20.5-14.7 38.3-33.2 52.4-54.3z">
+          </path>
         </svg>
       </a>
-      <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fkido0617.github.io%2Fgo%2F2016-08-08-map-copy%2F" class="article-share-facebook" target="_blank" title="Facebook">
+      <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fkido0617.github.io%2Fgo%2F2016-08-08-map-copy%2F"
+        class="article-share-facebook" target="_blank" title="Facebook">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
-        <path d="M304 96h80v-96h-80c-61.757 0-112 50.243-112 112v48h-64v96h64v256h96v-256h80l16-96h-96v-48c0-8.673 7.327-16 16-16z"></path>
+          <path
+            d="M304 96h80v-96h-80c-61.757 0-112 50.243-112 112v48h-64v96h64v256h96v-256h80l16-96h-96v-48c0-8.673 7.327-16 16-16z">
+          </path>
         </svg>
       </a>
     </footer>
-     
-  <aside class="footer-ad">
-    <div class="ad-title">広告</div>
-    <div class="ad-squares">
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- 336 X 280 -->
-      <ins class="adsbygoogle"
-          style="display:inline-block;width:336px;height:280px"
-          data-ad-client="ca-pub-1232486070209734"
-          data-ad-slot="9417597408"></ins>
-      <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- 336 X 280 -->
-      <ins class="adsbygoogle"
-          style="display:inline-block;width:336px;height:280px"
-          data-ad-client="ca-pub-1232486070209734"
-          data-ad-slot="9417597408"></ins>
-      <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div>
-  </aside>
-
   </div>
 </article>
 
 
   <section class="archives-wrap">
     <div class="archive-title-wrap">
-      <span class="archive-title">Golangカテゴリの記事</span>
+      <span class="archive-title">
+        Golangカテゴリの記事
+      </span>
     </div>
     <div class="archives">
       
         
-        <a class="archive-article-block"  href="/go/2017-02-04-sansan/">
+          <a class="archive-article-block"  href="/go/2017-02-04-sansan/">
   <div class="archive-article">
     <div class="archive-article-info">
       <span class="archive-article-date">
@@ -165,9 +153,9 @@
     <span class="archive-article-title">Go言語でSansanのAPIを呼ぶ</span>
   </div>
 </a>
-      
+            
         
-        <a class="archive-article-block"  href="/go/2016-08-10-reverse-proxy/">
+          <a class="archive-article-block"  href="/go/2016-08-10-reverse-proxy/">
   <div class="archive-article">
     <div class="archive-article-info">
       <span class="archive-article-date">
@@ -178,10 +166,10 @@
     <span class="archive-article-title">go言語でリバースプロキシ</span>
   </div>
 </a>
-      
+            
         
         
-        <a class="archive-article-block"  href="/go/2016-07-18-oauth2/">
+          <a class="archive-article-block"  href="/go/2016-07-18-oauth2/">
   <div class="archive-article">
     <div class="archive-article-info">
       <span class="archive-article-date">
@@ -192,35 +180,12 @@
     <span class="archive-article-title">go言語でoauth2パッケージを使う</span>
   </div>
 </a>
-      
+            
     </div>
   </section>
-
-</section>
+  </section>
         
           <aside id="sidebar">
-  
-    <div class="widget-wrap ad-widget">
-  <div class="widget-title">広告</div>
-  
-    <div class="widget">
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- レスポンシブ -->
-      <ins class="adsbygoogle"
-          style="display:block"
-          data-ad-client="ca-pub-1232486070209734"
-          data-ad-slot="6900476205"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-      <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div>
-  
-</div>
-
-
-
   
     <div class="widget-wrap">
   <div class="widget-title">Author</div>
@@ -273,7 +238,7 @@
       <footer id="footer">
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2023 kido (<a target="_blank" rel="noopener" href="https://twitter.com/kido0617">@kido0617</a>)<br>
+      &copy; 2024 kido (<a target="_blank" rel="noopener" href="https://twitter.com/kido0617">@kido0617</a>)<br>
     </div>
   </div>
 </footer>

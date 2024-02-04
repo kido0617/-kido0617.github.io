@@ -635,31 +635,6 @@ body {
   background: #3b5998;
   text-shadow: 0 1px #2f477a;
 }
-.footer-ad {
-  text-align: center;
-  margin: 0 20px 20px;
-}
-.ad-squares {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: box;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -moz-box-orient: horizontal;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: distribute;
-  -moz-box-pack: distribute;
-  -ms-flex-pack: distribute;
-  -webkit-justify-content: space-around;
-  justify-content: space-around;
-}
-.ad-title {
-  margin-bottom: 20px;
-}
 .archives-wrap {
   margin: 20px 0;
 }

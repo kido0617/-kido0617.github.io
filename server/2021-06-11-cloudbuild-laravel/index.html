@@ -30,7 +30,8 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1232486070209734"
+        crossorigin="anonymous"></script>
 
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body>
@@ -84,11 +85,15 @@
         <section id="main"><article id="post-server/2021-06-11-cloudbuild-laravel" class="article article-type-post">
   <div class="article-inner">
     <header class="article-header">
-      <h1 class="article-title">Cloud Buildを使ってLaravelをGAEにデプロイ</h1>
+      <h1 class="article-title">
+        Cloud Buildを使ってLaravelをGAEにデプロイ
+      </h1>
       <div class="article-meta">
         <a class="article-category-link" href="/categories/GCP/">GCP</a>
         <span class="article-date">
-          公開日:<time datetime="2021-06-10T15:00:00.000Z">2021-06-11</time>
+          公開日:<time datetime="2021-06-10T15:00:00.000Z">
+            2021-06-11
+          </time>
         </span>
       </div>
     </header>
@@ -97,55 +102,38 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">steps:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## npm run productionをしてjs,cssファイルを生成</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">node</span></span><br><span class="line">  <span class="attr">entrypoint:</span> <span class="string">npm</span></span><br><span class="line">  <span class="attr">args:</span> [<span class="string">&#x27;install&#x27;</span>]</span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">node</span></span><br><span class="line">  <span class="attr">entrypoint:</span> <span class="string">npm</span></span><br><span class="line">  <span class="attr">args:</span> [<span class="string">&#x27;run&#x27;</span>, <span class="string">&#x27;production&#x27;</span>]</span><br><span class="line">  </span><br><span class="line"><span class="comment">## APIキー情報などはシークレットマネージャに登録してあるので、そこから情報を取得して、secret.yamlとして書き出す(app.yamlからincludeする)</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">gcr.io/cloud-builders/gcloud</span></span><br><span class="line">  <span class="attr">entrypoint:</span> <span class="string">&#x27;bash&#x27;</span></span><br><span class="line">  <span class="attr">args:</span> [ <span class="string">&#x27;-c&#x27;</span>, <span class="string">&quot;gcloud secrets versions access latest --secret=xxxxxx --format=&#x27;get(payload.data)&#x27; | tr &#x27;_-&#x27; &#x27;/+&#x27; | base64 -d &gt; secret.yaml&quot;</span> ]</span><br><span class="line"></span><br><span class="line"><span class="comment">## デプロイ</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">&#x27;gcr.io/google.com/cloudsdktool/cloud-sdk&#x27;</span></span><br><span class="line">  <span class="attr">entrypoint:</span> <span class="string">&#x27;bash&#x27;</span></span><br><span class="line">  <span class="attr">args:</span> [<span class="string">&#x27;-c&#x27;</span>, <span class="string">&#x27;gcloud config set app/cloud_build_timeout 1600 &amp;&amp; gcloud app deploy app.yaml --project=xxxxxx&#x27;</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## おまけでslackに通知</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">gcr.io/cloud-builders/curl</span></span><br><span class="line">  <span class="attr">args:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">-X</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">POST</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">--data-urlencode</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">&quot;payload=&#123;\&quot;text\&quot;:\&quot;$BUILD_ID $REPO_NAMEをデプロイしました\&quot;&#125;&quot;</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">https://hooks.slack.com/services/xxxxxxxxxxxxxxxxxxxxxxx</span></span><br><span class="line"></span><br><span class="line"><span class="attr">timeout:</span> <span class="string">&#x27;1600s&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
     </div>
     <footer class="article-footer">
-      <a href="https://twitter.com/intent/tweet?text=Cloud%20Build%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6Laravel%E3%82%92GAE%E3%81%AB%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%20%7C%20GCP%20%7C%20kido tech blog%0a&url=https%3A%2F%2Fkido0617.github.io%2Fserver%2F2021-06-11-cloudbuild-laravel%2F" class="article-share-twitter" target="_blank" title="Twitter">
+      <a href="https://twitter.com/intent/tweet?text=Cloud%20Build%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6Laravel%E3%82%92GAE%E3%81%AB%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%20%7C%20GCP%20%7C%20kido tech blog%0a&url=https%3A%2F%2Fkido0617.github.io%2Fserver%2F2021-06-11-cloudbuild-laravel%2F"
+        class="article-share-twitter" target="_blank" title="Twitter">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
-        <path d="M512 113.2c-18.8 8.4-39.1 14-60.3 16.5 21.7-13 38.3-33.6 46.2-58.1-20.3 12-42.8 20.8-66.7 25.5-19.2-20.4-46.5-33.1-76.7-33.1-58 0-105 47-105 105 0 8.2 0.9 16.2 2.7 23.9-87.3-4.4-164.7-46.2-216.5-109.8-9 15.5-14.2 33.6-14.2 52.8 0 36.4 18.5 68.6 46.7 87.4-17.2-0.5-33.4-5.3-47.6-13.1 0 0.4 0 0.9 0 1.3 0 50.9 36.2 93.4 84.3 103-8.8 2.4-18.1 3.7-27.7 3.7-6.8 0-13.3-0.7-19.8-1.9 13.4 41.7 52.2 72.1 98.1 73-36 28.2-81.2 45-130.5 45-8.5 0-16.8-0.5-25.1-1.5 46.6 29.9 101.8 47.2 161.1 47.2 193.2 0 298.9-160.1 298.9-298.9 0-4.6-0.1-9.1-0.3-13.6 20.5-14.7 38.3-33.2 52.4-54.3z"></path>
+          <path
+            d="M512 113.2c-18.8 8.4-39.1 14-60.3 16.5 21.7-13 38.3-33.6 46.2-58.1-20.3 12-42.8 20.8-66.7 25.5-19.2-20.4-46.5-33.1-76.7-33.1-58 0-105 47-105 105 0 8.2 0.9 16.2 2.7 23.9-87.3-4.4-164.7-46.2-216.5-109.8-9 15.5-14.2 33.6-14.2 52.8 0 36.4 18.5 68.6 46.7 87.4-17.2-0.5-33.4-5.3-47.6-13.1 0 0.4 0 0.9 0 1.3 0 50.9 36.2 93.4 84.3 103-8.8 2.4-18.1 3.7-27.7 3.7-6.8 0-13.3-0.7-19.8-1.9 13.4 41.7 52.2 72.1 98.1 73-36 28.2-81.2 45-130.5 45-8.5 0-16.8-0.5-25.1-1.5 46.6 29.9 101.8 47.2 161.1 47.2 193.2 0 298.9-160.1 298.9-298.9 0-4.6-0.1-9.1-0.3-13.6 20.5-14.7 38.3-33.2 52.4-54.3z">
+          </path>
         </svg>
       </a>
-      <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fkido0617.github.io%2Fserver%2F2021-06-11-cloudbuild-laravel%2F" class="article-share-facebook" target="_blank" title="Facebook">
+      <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fkido0617.github.io%2Fserver%2F2021-06-11-cloudbuild-laravel%2F"
+        class="article-share-facebook" target="_blank" title="Facebook">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
-        <path d="M304 96h80v-96h-80c-61.757 0-112 50.243-112 112v48h-64v96h64v256h96v-256h80l16-96h-96v-48c0-8.673 7.327-16 16-16z"></path>
+          <path
+            d="M304 96h80v-96h-80c-61.757 0-112 50.243-112 112v48h-64v96h64v256h96v-256h80l16-96h-96v-48c0-8.673 7.327-16 16-16z">
+          </path>
         </svg>
       </a>
     </footer>
-     
-  <aside class="footer-ad">
-    <div class="ad-title">広告</div>
-    <div class="ad-squares">
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- 336 X 280 -->
-      <ins class="adsbygoogle"
-          style="display:inline-block;width:336px;height:280px"
-          data-ad-client="ca-pub-1232486070209734"
-          data-ad-slot="9417597408"></ins>
-      <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- 336 X 280 -->
-      <ins class="adsbygoogle"
-          style="display:inline-block;width:336px;height:280px"
-          data-ad-client="ca-pub-1232486070209734"
-          data-ad-slot="9417597408"></ins>
-      <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div>
-  </aside>
-
   </div>
 </article>
 
 
   <section class="archives-wrap">
     <div class="archive-title-wrap">
-      <span class="archive-title">GCPカテゴリの記事</span>
+      <span class="archive-title">
+        GCPカテゴリの記事
+      </span>
     </div>
     <div class="archives">
       
         
         
-        <a class="archive-article-block"  href="/server/2019-12-16-gae-image-upload-slow/">
+          <a class="archive-article-block"  href="/server/2019-12-16-gae-image-upload-slow/">
   <div class="archive-article">
     <div class="archive-article-info">
       <span class="archive-article-date">
@@ -156,9 +144,9 @@
     <span class="archive-article-title">GAEに画像をアップロードするのが遅い</span>
   </div>
 </a>
-      
+            
         
-        <a class="archive-article-block"  href="/server/2019-12-07-gae-https-only/">
+          <a class="archive-article-block"  href="/server/2019-12-07-gae-https-only/">
   <div class="archive-article">
     <div class="archive-article-info">
       <span class="archive-article-date">
@@ -169,35 +157,12 @@
     <span class="archive-article-title">GAEでhttpのアクセスをhttpsにリダイレクトする</span>
   </div>
 </a>
-      
+            
     </div>
   </section>
-
-</section>
+  </section>
         
           <aside id="sidebar">
-  
-    <div class="widget-wrap ad-widget">
-  <div class="widget-title">広告</div>
-  
-    <div class="widget">
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- レスポンシブ -->
-      <ins class="adsbygoogle"
-          style="display:block"
-          data-ad-client="ca-pub-1232486070209734"
-          data-ad-slot="6900476205"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-      <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div>
-  
-</div>
-
-
-
   
     <div class="widget-wrap">
   <div class="widget-title">Author</div>
@@ -250,7 +215,7 @@
       <footer id="footer">
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2023 kido (<a target="_blank" rel="noopener" href="https://twitter.com/kido0617">@kido0617</a>)<br>
+      &copy; 2024 kido (<a target="_blank" rel="noopener" href="https://twitter.com/kido0617">@kido0617</a>)<br>
     </div>
   </div>
 </footer>
