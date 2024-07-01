@@ -165,30 +165,6 @@
   
   <entry>
     <title>History Inspectorの紹介</title>
-    <link href="https://kido0617.github.io/unity/2023-12-10-linear-ui/"/>
-    <id>https://kido0617.github.io/unity/2023-12-10-linear-ui/</id>
-    <published>2021-08-04T15:00:00.000Z</published>
-    <updated>2021-08-04T15:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>この記事は「<a href="https://assetstore.info/eventandcontest/adventcalendar/summer-advent-calendar-2021/">Unity アセット真夏のアドベントカレンダー 2021 Summer!</a>」8/5の記事です。  </p><h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Unityでアセットの量が膨大なプロジェクトを扱っていると、必要なアセットを探すのに苦労します。<br>そういったときに手助けになるアセットが今回紹介する「<a href="https://assetstore.unity.com/packages/tools/utilities/history-inspector-44279?utm_source=twitter&utm_medium=social&utm_campaign=jp-advent-calendar-summer">History Inspector</a>」です。<br>このアセットは選択したファイルの履歴を保存し、その履歴にアクセスする手段を提供するアセットです。<br>直近で触ったファイルをもう一度いじる必要があるケースはよくあり、そういったときにこのアセットがあると便利です。  </p><h2 id="使い方"><a href="#使い方" class="headerlink" title="使い方"></a>使い方</h2><p>History Inspectorをインストールした後、<code>Window -&gt; History Inspector -&gt; Open History Inspector window</code>をクリックすると、以下のビューが表示されます。  </p><p><img src="/img/2021-08-05-history-inspector/hi1.jpg" alt="History Inspectorの表示"></p><p>以下動画のように左右の矢印ボタンでファイルの選択履歴を移動できます。  </p><p><video src="/img/2021-08-05-history-inspector/movie1.mp4" width="416" controls></video></p><p>また、上記図の現在選択しているファイル「SampleScene」となっているところをクリックすると以下のような履歴一覧が表示されます。</p><p><img src="/img/2021-08-05-history-inspector/hi2.jpg" alt="履歴一覧の表示"></p><p>この履歴一覧で鍵マークのアイコンがありますが、これはある種のお気に入り機能のようなものです。<br>選択履歴に関係なく、常に一番上に表示しておくことができます。<br>その次の<code>(1)</code>の数字はファイル選択数を指します。複数選択した場合もそれが履歴に残るため、このような数字が表示されています。</p><p><video src="/img/2021-08-05-history-inspector/movie2.mp4" width="416" controls></video></p><h2 id="アセットのファイル構成"><a href="#アセットのファイル構成" class="headerlink" title="アセットのファイル構成"></a>アセットのファイル構成</h2><p>ソースコードが付属しているので、改造が可能です。<br>履歴にオブジェクト名しか出ないので、パスも表示したい思いが個人的に少しあります。</p><h2 id="履歴の保存先"><a href="#履歴の保存先" class="headerlink" title="履歴の保存先"></a>履歴の保存先</h2><p>このアセットは履歴を<code>/Assets/HistoryInspector/Database/selectionlist.asset</code>に保存します。<br>バージョン管理する場合は、以下のファイルとフォルダを除外すると良いと思います。  </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/Assets/HistoryInspector/Database/</span><br><span class="line">/Assets/HistoryInspector/Database.meta</span><br></pre></td></tr></table></figure><h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>今回紹介したHistory Inspectorは選択したファイルの履歴を保存し、アクセスしやすくするアセットでした。<br>History Inspectorに履歴をロックするお気に入りのような機能がありますが、個人的にお気に入り機能ではオススメしたいアセットが別にあります。<br>それは「<a href="https://assetstore.unity.com/packages/tools/utilities/kris-favorite-assets-143105?utm_source=twitter&utm_medium=social&utm_campaign=jp-advent-calendar-summer">Kris’ Favorite Assets</a>」です。<br>こちらは頻繁にアクセスするファイルをお気に入り登録できるので、併せて利用すると捗ります。<br>具体的に「<a href="/unity/2020-08-29-krisFavoriteAssets/">Kris’ Favorite Assets が便利</a>」で紹介しています。</p><h2 id="使用バージョン"><a href="#使用バージョン" class="headerlink" title="使用バージョン"></a>使用バージョン</h2><p>Unity 2019.4.29<br>History Inspector 1.2</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;この記事は「&lt;a href=&quot;https://assetstore.info/eventandcontest/adventcalendar/summer-advent-calendar-2021/&quot;&gt;Unity アセット真夏のアドベントカレンダー 2021 Summer!&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="Unity" scheme="https://kido0617.github.io/categories/Unity/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>History Inspectorの紹介</title>
     <link href="https://kido0617.github.io/unity/2021-08-05-history-inspector/"/>
     <id>https://kido0617.github.io/unity/2021-08-05-history-inspector/</id>
     <published>2021-08-04T15:00:00.000Z</published>
@@ -252,6 +228,31 @@
         &lt;p&gt;基本的に以下のURLのドキュメントを参考にしています。  &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://ja.esotericsoftware.com/spine-unity&quot;&gt;spine-unity Runtime Documentation&lt;/a&gt;&lt;/li
+      
+    
+    </summary>
+    
+    
+      <category term="Spine" scheme="https://kido0617.github.io/categories/Spine/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>プレビューとランタイムでの再生が異なる問題</title>
+    <link href="https://kido0617.github.io/spine/2021-06-23-animation-cleanup/"/>
+    <id>https://kido0617.github.io/spine/2021-06-23-animation-cleanup/</id>
+    <published>2021-06-22T15:00:00.000Z</published>
+    <updated>2021-06-22T15:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Spineのエディタ上でトラックを複数用いて、プレビューでアニメーションを確認します。<br>同様にランタイム側（私の場合はUnity)でトラックを重ねて再生したところ、微妙にアニメーションが異なってしまいました。  </p><p>これは、Exportのときに<code>Animation clean up</code>を選択して不要なキーを削除していたからでした。<br>トラックの重ね方があまり正しくないのだと思うのですが、以下のような状況です。  </p><p>トラック1: ボーンAを90度曲げる<br>トラック2: ボーンAをデフォルトの角度に上書きする</p><p>デフォルトの角度のキーはAnimation clean up で削除されてしまうので、トラック2で上書けなかったということです。<br>Animation clean upの挙動的にも正しく、私の作り方に問題があったと思います。  </p><p>ちなみにExport時でなくとも、該当のアニメーションを選択した状態でツリービューの下にあるclean upボタンを押すとどのキーが消されるかは確認できます。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Spineのエディタ上でトラックを複数用いて、プレビューでアニメーションを確認します。&lt;br&gt;同様にランタイム側（私の場合はUnity)でトラックを重ねて再生したところ、微妙にアニメーションが異なってしまいました。  &lt;/p&gt;
+&lt;p&gt;これは、Exportのときに&lt;code&gt;
       
     
     </summary>
